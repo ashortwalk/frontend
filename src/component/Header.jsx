@@ -5,7 +5,7 @@ import "./Header.css";
 export default function Header() {
   const authorization = window.sessionStorage.getItem("Authorization");
   const token = window.sessionStorage.getItem("token");
-  const [isLogined, setIsLogined] = useState(false);
+  const [isLogined, setIsLogined] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -51,6 +51,8 @@ export default function Header() {
     if (authorization || token) {
       authCheck();
       refreshAccessToken();
+    } else {
+      setIsLogined(false);
     }
 
     // refreshAccessToken 함수 정의
