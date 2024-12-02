@@ -1,5 +1,5 @@
 
-![logo](https://github.com/user-attachments/assets/e11880de-7f4c-428d-9ee8-bac6a70e0efd)
+<img src="https://github.com/user-attachments/assets/e11880de-7f4c-428d-9ee8-bac6a70e0efd" width="200" height="200">
 
 # 짧은 산책 Frontend
 
