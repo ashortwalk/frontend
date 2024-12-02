@@ -4,42 +4,31 @@ import "./Header.css";
 
 export default function Header() {
   const authorization = window.sessionStorage.getItem("Authorization");
-  const [isLogined, setIsLogined] = useState(false);
+  const token = window.sessionStorage.getItem("token");
+  const [isLogined, setIsLogined] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  async function refreshAccessToken() {
-    const response = await fetch(
-      "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/auth/refresh",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: authorization,
-        },
-      }
-    );
 
-    if (!response.ok) {
-      sessionStorage.removeItem("Authorization");
-      sessionStorage.removeItem("token");
-      setIsLogined(false);
-      alert("세션이 만료되었습니다. 재로그인 해 주세요.");
-
+  useEffect(() => {
+    // 로그인되지 않은 경우 경로를 체크하고 로그인 페이지로 리디렉션
+    const checkRedirect = () => {
+      const currentPath = window.location.pathname;
       if (
-        !(
-          window.location.pathname === "/" ||
-          window.location.pathname === "/posts" ||
-          window.location.pathname === "/login"
-        )
+        !isLogined &&
+        ![
+          "/",
+          "/posts",
+          "/login",
+          "/login/email",
+          "/login/kakao",
+          "/signup",
+        ].includes(currentPath)
       ) {
         window.location.href = "/login";
       }
-    }
+    };
 
-    const data = await response.json();
-    sessionStorage.setItem("Authorization", data.accessToken);
-    return;
-  }
-  useEffect(() => {
+    checkRedirect(); // 페이지 로드 시 체크
+
     async function authCheck() {
       try {
         const response = await axios.get(
@@ -48,24 +37,62 @@ export default function Header() {
             headers: { Authorization: authorization },
           }
         );
-
-        if (200 <= response.status < 300) {
-          setIsLogined(true);
+        if (response.status === 200) {
+          if (!isLogined) setIsLogined(true); // 로그인 상태 변경
         } else if (response.status === 401) {
-          refreshAccessToken();
-          window.location.reload();
+          await refreshAccessToken(); // 토큰 갱신 시도
+        } else {
+          checkRedirect(); // 로그인 상태가 아닌 경우 경로 리디렉션
         }
-      } catch (err) {
-        console.error(err);
-      }
+      } catch (err) {}
     }
-    authCheck();
-  }, [authorization]);
+
+    // `authorization` 또는 `token`이 존재할 때만 authCheck 호출
+    if (authorization || token) {
+      authCheck();
+      refreshAccessToken();
+    }
+
+    // refreshAccessToken 함수 정의
+    async function refreshAccessToken() {
+      try {
+        const response = await fetch(
+          "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/auth/refresh",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token, // `Bearer` 방식으로 전달
+            },
+          }
+        );
+        console.log("리프레시 토큰 작동");
+
+        if (response.status === 401) {
+          // 토큰이 만료된 경우
+          sessionStorage.removeItem("Authorization");
+          sessionStorage.removeItem("token");
+          setIsLogined(false);
+          alert("세션이 만료되었습니다. 재로그인 해 주세요.");
+        } else {
+          const data = await response.json();
+          if (response.status >= 200 && response.status < 300) {
+            // 토큰 갱신 후, 새로운 accessToken을 세션 스토리지에 저장
+            sessionStorage.setItem("Authorization", data.accessToken);
+            setIsLogined(true); // 로그인 상태 갱신
+          }
+        }
+      } catch (err) {}
+    }
+  }, []);
 
   function logout() {
     sessionStorage.removeItem("Authorization");
+    sessionStorage.removeItem("token");
+    setIsLogined(false); // 로그아웃 시 상태 변경
     window.location.reload();
   }
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };

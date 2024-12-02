@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Radar } from "react-chartjs-2";
+import "./MyPage.css";
 import {
   Chart as ChartJS,
   RadarController,
@@ -76,12 +77,17 @@ export default function Chart() {
 
   // 로딩 중일 때 메시지 표시
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="chart-box">
+        <p>산책 성향을 통계하고 있습니다.</p>
+        <p>잠시만 기다려 주세요.</p>
+      </div>
+    );
   }
 
   // 데이터가 없으면 에러 처리
   if (!data) {
-    return <div>Failed to load chart data.</div>;
+    return <div className="chart-box"></div>;
   }
 
   // 차트 옵션
@@ -104,7 +110,7 @@ export default function Chart() {
   };
 
   return (
-    <div>
+    <div className="chart">
       <Radar data={data} options={options} />
     </div>
   );
