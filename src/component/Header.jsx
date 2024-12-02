@@ -41,8 +41,6 @@ export default function Header() {
           if (!isLogined) setIsLogined(true); // 로그인 상태 변경
         } else if (response.status === 401) {
           await refreshAccessToken(); // 토큰 갱신 시도
-        } else {
-          checkRedirect(); // 로그인 상태가 아닌 경우 경로 리디렉션
         }
       } catch (err) {}
     }
@@ -82,6 +80,7 @@ export default function Header() {
             // 토큰 갱신 후, 새로운 accessToken을 세션 스토리지에 저장
             sessionStorage.setItem("Authorization", data.accessToken);
             setIsLogined(true); // 로그인 상태 갱신
+            window.location.reload();
           }
         }
       } catch (err) {}
