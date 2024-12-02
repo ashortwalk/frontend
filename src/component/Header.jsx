@@ -5,7 +5,7 @@ import "./Header.css";
 export default function Header() {
   const authorization = window.sessionStorage.getItem("Authorization");
   const token = window.sessionStorage.getItem("token");
-  const [isLogined, setIsLogined] = useState(true);
+  const [isLogined, setIsLogined] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
