@@ -68,7 +68,6 @@ export default function EmailLogin() {
               className="email-login-input"
               onChange={handleInputChange}
               onKeyDown={(e) => {
-                e.preventDefault();
                 if (e.key == "Enter") handleSubmit();
               }}
             ></input>

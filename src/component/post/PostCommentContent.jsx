@@ -107,7 +107,6 @@ export default function PostCommentContent() {
             onChange={(e) => setContent(e.target.value)}
             placeholder="댓글을 작성해 주세요."
             onKeyDown={(e) => {
-              e.preventDefault();
               if (e.key == "Enter") handleSubmin();
             }}
           />
@@ -128,7 +127,6 @@ export default function PostCommentContent() {
                       value={editingContent}
                       onChange={(e) => setEditingContent(e.target.value)}
                       onKeyDown={(e) => {
-                        e.preventDefault();
                         if (e.key == "Enter") saveEditing(comm.id);
                       }}
                     />
