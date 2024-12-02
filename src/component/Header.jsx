@@ -83,7 +83,7 @@ export default function Header() {
         }
       } catch (err) {}
     }
-  }, []);
+  }, [authorization, token, isLogined]);
 
   function logout() {
     sessionStorage.removeItem("Authorization");
