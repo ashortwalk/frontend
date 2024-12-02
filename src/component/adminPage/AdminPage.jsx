@@ -64,14 +64,6 @@ export default function AdminPage() {
           <div className="group-box">
             <div className="group-border-box">
               <div className="admin-box">
-                <h2>공지사항</h2>
-
-                <textarea className="notice"></textarea>
-                <button className="notice-button">공지사항 배포</button>
-              </div>
-            </div>
-            <div className="group-border-box">
-              <div className="admin-box">
                 <h2 className="admin-subtitle">그룹 삭제</h2>
                 <div className="group-name-box">
                   <label className="admin-label">그룹 이름</label>
