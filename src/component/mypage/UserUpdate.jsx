@@ -78,10 +78,6 @@ export default function UserUpdate() {
         <div className="form-container">
           <h1>회원 정보 수정</h1>
           <div className="form-row">
-            <label>E-mail</label>
-            <input type="text" id="email" value={email} disabled></input>
-          </div>
-          <div className="form-row">
             <label>닉네임</label>
             <input
               type="text"

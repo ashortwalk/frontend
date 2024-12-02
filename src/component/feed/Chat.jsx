@@ -127,6 +127,12 @@ const ChatComponent = ({ myGroup }) => {
           <p className="chat-notice">
             📣 채팅 서비스는 그룹의 멤버만 참여할 수 있습니다.
           </p>
+          <div
+            style={{
+              height: "400px",
+              marginBottom: "10px",
+            }}
+          ></div>
         </div>
       )}
     </div>
