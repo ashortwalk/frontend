@@ -12,6 +12,7 @@ const ChatComponent = ({ myGroup }) => {
   const [messageInput, setMessageInput] = useState("");
   const { id: groupId } = myGroup;
   const [nickname, setNickname] = useState("");
+  const [isMember, SetIsMember] = useState(true);
   const token = sessionStorage.getItem("Authorization");
 
   useEffect(() => {
@@ -36,6 +37,11 @@ const ChatComponent = ({ myGroup }) => {
     socketRef.current.on("chat:message", (data) => {
       setMessages((prevMessages) => [...prevMessages, data]);
     });
+    socketRef.current.on("error", (data) => {
+      SetIsMember(false);
+      socketRef.current.disconnect();
+    });
+
     socketRef.current.emit("get:prev", { room: groupId });
 
     return () => {
@@ -62,53 +68,67 @@ const ChatComponent = ({ myGroup }) => {
 
   return (
     <div>
-      <p className="chat-notice">
-        📣 당신과 대화를 나누는 상대는 누군가의 소중한 금지옥엽입니다. 융숭한
-        대접 부탁드립니다.
-      </p>
-      <div
-        ref={messageListRef}
-        style={{ height: "400px", overflowY: "scroll", marginBottom: "10px" }}
-      >
-        {messages.map((msg, idx) => {
-          if (msg.nickname == nickname)
-            return (
-              <div className="my-chat-box" key={idx}>
-                <p> {msg.content}</p>
-                <p className="chat-nickname">{msg.nickname}</p>
-              </div>
-            );
-          else
-            return (
-              <div className="chat-box" key={idx}>
-                <p> {msg.content}</p>
-                <p className="chat-nickname">{msg.nickname}</p>
-              </div>
-            );
-        })}
-      </div>
+      {isMember ? (
+        <div>
+          <p className="chat-notice">
+            📣 당신과 대화를 나누는 상대는 누군가의 소중한 금지옥엽입니다.
+            융숭한 대접 부탁드립니다.
+          </p>
+          <div
+            ref={messageListRef}
+            style={{
+              height: "400px",
+              overflowY: "scroll",
+              marginBottom: "10px",
+            }}
+          >
+            {messages.map((msg, idx) => {
+              if (msg.nickname == nickname)
+                return (
+                  <div className="my-chat-box" key={idx}>
+                    <p> {msg.content}</p>
+                    <p className="chat-nickname">{msg.nickname}</p>
+                  </div>
+                );
+              else
+                return (
+                  <div className="chat-box" key={idx}>
+                    <p> {msg.content}</p>
+                    <p className="chat-nickname">{msg.nickname}</p>
+                  </div>
+                );
+            })}
+          </div>
 
-      <div className="chat-input-box">
-        <input
-          className="chat-input"
-          type="text"
-          value={messageInput}
-          onChange={(e) => setMessageInput(e.target.value)}
-          placeholder="Type your message..."
-          onKeyDown={(e) => {
-            if (e.key == "Enter") handleSendMessage();
-          }}
-        />
-        <button
-          className="chat-button"
-          onClick={(e) => {
-            e.preventDefault();
-            handleSendMessage();
-          }}
-        >
-          Send
-        </button>
-      </div>
+          <div className="chat-input-box">
+            <input
+              className="chat-input"
+              type="text"
+              value={messageInput}
+              onChange={(e) => setMessageInput(e.target.value)}
+              placeholder="Type your message..."
+              onKeyDown={(e) => {
+                if (e.key == "Enter") handleSendMessage();
+              }}
+            />
+            <button
+              className="chat-button"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSendMessage();
+              }}
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <p className="chat-notice">
+            📣 채팅 서비스는 그룹의 멤버만 참여할 수 있습니다.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

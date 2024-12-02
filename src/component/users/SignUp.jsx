@@ -41,6 +41,7 @@ export default function SignUp() {
       }
     )
       .then((response) => {
+        if (response.status == 409) alert("중복된 계정이 존재합니다.");
         if (!response.ok) {
           throw new Error("네트워크 응답에 문제가 있습니다.");
         }
@@ -66,15 +67,19 @@ export default function SignUp() {
       }
     )
       .then((response) => {
+        if (response.status == 409) alert("중복된 계정이 존재합니다.");
+
         if (!response.ok) {
           throw new Error("네트워크 응답에 문제가 있습니다.");
         }
         return response.json();
       })
       .then((data) => {
-        alert("회원가입 되었습니다.");
-        window.sessionStorage.setItem("Authorization", data.accessToken);
-        window.location.href = "/";
+        if (data) {
+          alert("회원가입 되었습니다.");
+          window.sessionStorage.setItem("Authorization", data.accessToken);
+          window.location.href = "/";
+        }
       })
       .catch((error) => {});
   };
