@@ -7,9 +7,7 @@ export default function Header() {
   const token = window.sessionStorage.getItem("token");
   const [isLogined, setIsLogined] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   useEffect(() => {
-    // 로그인되지 않은 경우 경로를 체크하고 로그인 페이지로 리디렉션
     const checkRedirect = () => {
       const currentPath = window.location.pathname;
       if (
@@ -26,8 +24,10 @@ export default function Header() {
         window.location.href = "/login";
       }
     };
-
-    checkRedirect(); // 페이지 로드 시 체크
+    checkRedirect();
+  }, [isLogined]);
+  useEffect(() => {
+    // 로그인되지 않은 경우 경로를 체크하고 로그인 페이지로 리디렉션
 
     async function authCheck() {
       try {
