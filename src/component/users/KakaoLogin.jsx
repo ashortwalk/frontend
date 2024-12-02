@@ -1,3 +1,5 @@
+import "./KakaoLogin.css";
+
 function KakaoLogin() {
   const { Kakao } = window;
   async function StartKakao() {
@@ -19,7 +21,11 @@ function KakaoLogin() {
 
   StartKakao();
 
-  return <></>;
+  return (
+    <div className="kakao-box">
+      <p>카카오 로그인이 진행 중입니다...</p>
+    </div>
+  );
 }
 
 export default KakaoLogin;
