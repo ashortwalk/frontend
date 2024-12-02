@@ -106,6 +106,10 @@ export default function PostCommentContent() {
             type="text"
             onChange={(e) => setContent(e.target.value)}
             placeholder="댓글을 작성해 주세요."
+            onKeyDown={(e) => {
+              e.preventDefault();
+              handleSubmin();
+            }}
           />
           <button type="submit">작성</button>
         </form>
@@ -123,6 +127,10 @@ export default function PostCommentContent() {
                     <input
                       value={editingContent}
                       onChange={(e) => setEditingContent(e.target.value)}
+                      onKeyDown={(e) => {
+                        e.preventDefault();
+                        saveEditing(comm.id);
+                      }}
                     />
                     <button onClick={() => saveEditing(comm.id)}>저장</button>
                     <button onClick={cancelEditing}>취소</button>

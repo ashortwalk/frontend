@@ -35,7 +35,15 @@ export default function MyPage() {
           >
             회원 정보 수정
           </button>
-          <button className="user-delete-btn">회원 탈퇴</button>
+          <button
+            className="user-delete-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = "/user/signout";
+            }}
+          >
+            회원 탈퇴
+          </button>
           <div className="greet-box">
             <p className="mypage-greet">
               <strong>{nickname}</strong> 님 안녕하세요!

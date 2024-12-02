@@ -72,6 +72,8 @@ export default function SignOut() {
       .then((data) => {
         alert("회원 탈퇴되었습니다.");
         window.location.href = "/";
+        window.sessionStorage.removeItem("Authorization");
+        window.sessionStorage.removeItem("token");
       })
       .catch((error) => {});
   };
@@ -86,9 +88,6 @@ export default function SignOut() {
             <label>E-mail</label>
             <input type="text" id="email" value={email} disabled></input>
           </div>
-          <br />
-          정말 탈퇴하시겠습니까?
-          <br />
           <br />
           탈퇴를 원하신다면 다음 문구를 정확히 입력하세요.
           <br /> [회원을 탈퇴합니다.]

@@ -67,6 +67,10 @@ export default function EmailLogin() {
               id="password"
               className="email-login-input"
               onChange={handleInputChange}
+              onKeyDown={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
             ></input>
           </div>
           <button className="email-login-button" onClick={handleSubmit}>

@@ -22,8 +22,10 @@ function KakaoLogin() {
   StartKakao();
 
   return (
-    <div className="kakao-box">
-      <p>카카오 로그인이 진행 중입니다...</p>
+    <div className="kakao-container">
+      <div className="kakao-box">
+        <p>카카오 로그인이 진행 중입니다...</p>
+      </div>
     </div>
   );
 }

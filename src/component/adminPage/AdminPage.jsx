@@ -19,6 +19,9 @@ export default function AdminPage() {
           headers: { Authorization: authorization },
         }
       );
+      if (response.stauts === 401) {
+        window.location.href = "./";
+      }
       setReports(response.data);
     }
     async function fetchTotalPages() {

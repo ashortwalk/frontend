@@ -95,6 +95,10 @@ const ChatComponent = ({ myGroup }) => {
           value={messageInput}
           onChange={(e) => setMessageInput(e.target.value)}
           placeholder="Type your message..."
+          onKeyDown={(e) => {
+            e.preventDefault();
+            handleSendMessage();
+          }}
         />
         <button
           className="chat-button"
