@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import './MyGroup.css'
+import "./MyGroup.css";
 
 export default function MyGroup({ groups }) {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export default function MyGroup({ groups }) {
       .then((data) => {
         window.location.href = "/group";
       })
-      .catch((error) => { });
+      .catch((error) => {});
   };
   useState(() => {
     const fetchUserId = (id) => {
@@ -53,7 +53,7 @@ export default function MyGroup({ groups }) {
         .then((data) => {
           setLoginId(data.id);
         })
-        .catch((error) => { });
+        .catch((error) => {});
     };
 
     fetchUserId();
@@ -62,9 +62,17 @@ export default function MyGroup({ groups }) {
   return (
     <div className="myGroup">
       {groups.map((group) => {
-
         return (
-          <div className="myGroupContainer">
+          <div
+            className="myGroupContainer"
+            onClick={(e) => {
+              e.preventDefault();
+
+              if (e.target.className !== "my-group=btn") {
+                window.location.href = `/groups/${group.id}/feeds`;
+              }
+            }}
+          >
             <div className="myGroupDetail">
               <h3>{group.groupName}</h3>
               <p>{group.description}</p>
@@ -72,17 +80,22 @@ export default function MyGroup({ groups }) {
             </div>
             {loginId === group.leaderUserId ? (
               <div className="myGroupButton">
-                <button onClick={() => handelUpdateButtonClick(group.id)}>
+                <button
+                  className="my-group-btn"
+                  onClick={() => handelUpdateButtonClick(group.id)}
+                >
                   수정
                 </button>
-                <button onClick={() => handelDeleteButtonClick(group.id)}>
+                <button
+                  className="my-group-btn"
+                  onClick={() => handelDeleteButtonClick(group.id)}
+                >
                   삭제
                 </button>
               </div>
             ) : (
               <></>
             )}
-
           </div>
         );
       })}
