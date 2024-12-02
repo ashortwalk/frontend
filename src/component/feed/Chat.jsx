@@ -97,7 +97,7 @@ const ChatComponent = ({ myGroup }) => {
           placeholder="Type your message..."
           onKeyDown={(e) => {
             e.preventDefault();
-            handleSendMessage();
+            if (e.key == "Enter") handleSendMessage();
           }}
         />
         <button

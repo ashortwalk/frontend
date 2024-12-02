@@ -69,7 +69,7 @@ export default function EmailLogin() {
               onChange={handleInputChange}
               onKeyDown={(e) => {
                 e.preventDefault();
-                handleSubmit();
+                if (e.key == "Enter") handleSubmit();
               }}
             ></input>
           </div>
