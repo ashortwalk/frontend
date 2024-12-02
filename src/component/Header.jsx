@@ -46,7 +46,6 @@ export default function Header() {
     // `authorization` 또는 `token`이 존재할 때만 authCheck 호출
     if (authorization || token) {
       authCheck();
-      refreshAccessToken();
       checkRedirect();
     } else {
       setIsLogined(false);
@@ -80,7 +79,6 @@ export default function Header() {
             // 토큰 갱신 후, 새로운 accessToken을 세션 스토리지에 저장
             sessionStorage.setItem("Authorization", data.accessToken);
             setIsLogined(true); // 로그인 상태 갱신
-            window.location.reload();
           }
         }
       } catch (err) {}
