@@ -23,7 +23,7 @@ export default function MissionEdit() {
   const handleSubmit = async (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
     await fetch(
-      `http://localhost:8000/api/groups/${groupId}/missions/${missionId}`,
+      `http://localhost:3000/api/groups/${groupId}/missions/${missionId}`,
       {
         method: "PATCH", // POST 요청
         headers: {
@@ -49,7 +49,7 @@ export default function MissionEdit() {
   useEffect(() => {
     const findMission = async () => {
       const response = await axios.get(
-        `http://localhost:8000/api/groups/${groupId}/missions`,
+        `http://localhost:3000/api/groups/${groupId}/missions`,
         { headers: { authorization: token } }
       );
       setTitle(response.data.title);

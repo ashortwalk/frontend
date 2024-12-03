@@ -17,7 +17,7 @@ export default function EmailLogin() {
   };
 
   const handleSubmit = async (e) => {
-    await fetch("http://localhost:8000/api/auth/login", {
+    await fetch("http://localhost:3000/api/auth/login", {
       method: "POST", // POST 요청
       headers: {
         "Content-Type": "application/json", // JSON 형식으로 전송

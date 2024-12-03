@@ -10,7 +10,7 @@ export default function MyPage() {
   const authorization = sessionStorage.getItem("Authorization");
   try {
     const findNickname = async () => {
-      const response = await axios.get(`http://localhost:8000/api/users`, {
+      const response = await axios.get(`http://localhost:3000/api/users`, {
         headers: { authorization },
       });
       setNickname(response.data.nickname);

@@ -48,7 +48,7 @@ export default function PostImgContent({ data }) {
             if (window.confirm("정말로 삭제하시겠습니까?")) {
               try {
                 await axios.delete(
-                  `http://localhost:8000/api/posts/${postId}`,
+                  `http://localhost:3000/api/posts/${postId}`,
                   {
                     headers: {
                       Authorization: authorization,

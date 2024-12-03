@@ -11,8 +11,10 @@ export default function CommentPage() {
   useEffect(() => {
     async function fetchComment() {
       const response = await axios.get(
-        `http://localhost:8000/api/comments/${id}`,
-        { headers: { Authorization: sessionStorage.getItem("Authorization") } }
+        `http://localhost:3000/api/comments/${id}`,
+        {
+          headers: { Authorization: sessionStorage.getItem("Authorization") },
+        }
       );
       setComment(response.data);
     }

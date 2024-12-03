@@ -30,7 +30,7 @@ export default function Header() {
     async function authCheck() {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/auth/check",
+          "http://localhost:3000/api/auth/check",
           {
             headers: { Authorization: authorization },
           }
@@ -55,7 +55,7 @@ export default function Header() {
     // refreshAccessToken 함수 정의
     async function refreshAccessToken() {
       try {
-        const response = await fetch("http://localhost:8000/api/auth/refresh", {
+        const response = await fetch("http://localhost:3000/api/auth/refresh", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

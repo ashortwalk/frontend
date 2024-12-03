@@ -12,7 +12,7 @@ export default function MyGroup({ groups }) {
     navigate(`/groups/${id}/update`, { state: dataToSend });
   };
   const handleSignOutButtonClick = (id) => {
-    fetch(`http://localhost:8000/api/groups/${id}/members`, {
+    fetch(`http://localhost:3000/api/groups/${id}/members`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export default function MyGroup({ groups }) {
       .catch((error) => {});
   };
   const handelDeleteButtonClick = (id) => {
-    fetch(`http://localhost:8000/api/groups/${id}`, {
+    fetch(`http://localhost:3000/api/groups/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export default function MyGroup({ groups }) {
   };
   useState(() => {
     const fetchUserId = (id) => {
-      fetch(`http://localhost:8000/api/users`, {
+      fetch(`http://localhost:3000/api/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
