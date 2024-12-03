@@ -103,7 +103,7 @@ export default function FeedPage() {
     console.log(authorization);
     try {
       const response = await axios.post(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes`,
+        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes`,{},
         { headers: { authorization } }
       );
       console.log(response);
