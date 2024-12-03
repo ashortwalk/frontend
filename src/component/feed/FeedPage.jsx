@@ -36,7 +36,7 @@ export default function FeedPage() {
         );
 
         setMyGroup(response.data);
-      } catch (error) { }
+      } catch (error) {}
     };
 
     findFeed();
@@ -74,7 +74,7 @@ export default function FeedPage() {
         }
       };
       feedContentWrite();
-    } catch (e) { }
+    } catch (e) {}
   };
 
   // 피드 수정 시작
@@ -102,7 +102,7 @@ export default function FeedPage() {
         )
       );
       setEditingContentId(null); // 수정 모드 종료
-    } catch (error) { }
+    } catch (error) {}
   };
 
   // 피드 수정 취소
@@ -123,7 +123,22 @@ export default function FeedPage() {
               <h2>{myGroup.groupName}</h2>
               <p>{myGroup.description}</p>
               <p>{myGroup.leaderNickname}</p>
-              <button onClick={(e) => { e.preventDefault(); window.location.href = `/groups/${groupId}/missions/create` }}>미션 생성</button>
+              <div className="mission-box">
+                <h3>제목</h3>
+                <p>내용입니다.</p>
+                <div className="mission-button-box">
+                  <button
+                    className="mission-create-button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.href = `/groups/${groupId}/missions/create`;
+                    }}
+                  >
+                    미션 생성
+                  </button>
+                  <p>(3/9)</p>
+                </div>
+              </div>
             </div>
             <form onSubmit={handleSubmin}>
               <input
@@ -191,7 +206,7 @@ export default function FeedPage() {
                                       (feeds) => feeds.id !== feed.id
                                     )
                                   );
-                                } catch (e) { }
+                                } catch (e) {}
                               }
                             }}
                           >
