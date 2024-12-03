@@ -27,14 +27,14 @@ export default function FeedPage() {
       const findTotalMemberCount = async () => {
         const response = await axios.get(
           `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/members/count`,
-          { headers: { authorization } }
+               { headers: { Authorization : authorization } }
         );
         setTotalMember(response.data);
       };
       const findCompleteCount = async () => {
         const response = await axios.get(
           `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes`,
-          { headers: { authorization } }
+                { headers: { Authorization : authorization } }
         );
         setTotalCompelete(response.data);
       };
@@ -74,7 +74,7 @@ export default function FeedPage() {
       const isComplete = async () => {
         const response = await axios.get(
           `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes/check`,
-          { headers: { authorization } }
+             { headers: { Authorization : authorization } }
         );
         if (response.data) {
           setIsComplete(true);
@@ -104,7 +104,7 @@ export default function FeedPage() {
     try {
       const response = await axios.post(
         `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes`,{},
-        { headers: { authorization } }
+        { headers: { Authorization : authorization } }
       );
       console.log(response);
       if(response.status==200||response.status==201){setIsComplete(true);
