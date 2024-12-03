@@ -107,8 +107,9 @@ export default function FeedPage() {
         { headers: { authorization } }
       );
       console.log(response);
+      if(response.status==200||response.status==201){SetIsComplete(true)}
     } catch (err) {
-      console.log("err" + err);
+      alert("미션 완료에 실패하였습니다.")
     }
 
     setIsComplete(true);
