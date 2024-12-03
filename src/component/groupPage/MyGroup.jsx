@@ -11,6 +11,30 @@ export default function MyGroup({ groups }) {
     const dataToSend = { id };
     navigate(`/groups/${id}/update`, { state: dataToSend });
   };
+  const handleSignOutButtonClick = (id) => {
+    fetch(
+      `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${id}/members`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("그룹 탈퇴 완료되었습니다.");
+        } else {
+          alert("그룹 탈퇴 실패하였습니다.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        window.location.href = "/groups";
+      })
+      .catch((error) => {});
+  };
   const handelDeleteButtonClick = (id) => {
     fetch(
       `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${id}`,
@@ -24,14 +48,14 @@ export default function MyGroup({ groups }) {
     )
       .then((response) => {
         if (response.ok) {
-          alert("그룹삭제 완료되었습니다.");
+          alert("그룹 삭제 완료되었습니다.");
         } else {
-          alert("그룹삭제 실패하였습니다.");
+          alert("그룹 삭제 실패하였습니다.");
         }
         return response.json();
       })
       .then((data) => {
-        window.location.href = "/group";
+        window.location.href = "/groups";
       })
       .catch((error) => {});
   };
@@ -68,7 +92,7 @@ export default function MyGroup({ groups }) {
             onClick={(e) => {
               e.preventDefault();
 
-              if (e.target.className !== "my-group=btn") {
+              if (e.target.className !== "my-group-btn") {
                 window.location.href = `/groups/${group.id}/feeds`;
               }
             }}
@@ -94,7 +118,14 @@ export default function MyGroup({ groups }) {
                 </button>
               </div>
             ) : (
-              <></>
+              <div className="myGroupButton">
+                <button
+                  className="my-group-btn"
+                  onClick={() => handleSignOutButtonClick(group.id)}
+                >
+                  탈퇴
+                </button>
+              </div>
             )}
           </div>
         );
