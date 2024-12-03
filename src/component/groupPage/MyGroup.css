@@ -1,77 +1,98 @@
 .myGroup {
-    width: 100%;
+  width: 100%;
 }
 
 .myGroupContainer {
-    /* min-width: 647px; */
-    width: 35VW;
-    border: 1px solid #D4D2E3;
-    border-radius: 24px;
-    background-color: white;
-    margin-bottom: 20px;
-    padding: 30px 36px;
+  width: 35vw; /* 기본적으로 너비를 35%로 설정 */
+  border: 1px solid #d4d2e3;
+  border-radius: 24px;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 30px 36px;
 
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row; /* 기본적으로 가로 방향 배치 */
+  align-items: start;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
-.myGroupContainer .myGroupDetail {}
+.myGroupContainer .myGroupDetail {
+}
 
 .myGroupContainer .myGroupDetail h3 {
-    margin: 0;
+  margin: 0;
 }
 
 .myGroupContainer .myGroupDetail p {
-    font-size: 14px;
-    color: #A0A3BD;
-    line-height: 16px;
+  font-size: 14px;
+  color: #a0a3bd;
+  line-height: 16px;
 }
 
-.myGroupContainer .myGroupButton {}
+.myGroupContainer .myGroupButton {
+}
 
 .myGroupContainer .myGroupButton button {
-    background-color: white;
-    border: none;
-    color: #0094ff;
-    font-size: 14px;
-    cursor: pointer;
-    display: inline-block;
-    margin-left: 8px;
-    padding: 0 4px;
+  background-color: white;
+  border: 1px solid #0094ff; /* 버튼의 기본 테두리 색상 */
+  color: #0094ff;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 8px;
+  padding: 8px 16px; /* 버튼의 크기를 더 커지게 조정 */
+  border-radius: 8px; /* 둥근 버튼 모서리 */
+  transition: background-color 0.3s ease, color 0.3s ease; /* 버튼 호버 효과 */
 }
 
+/* 버튼 호버 효과 */
+.myGroupContainer .myGroupButton button:hover {
+  background-color: #0094ff;
+  color: white;
+}
+
+/* 모바일 환경에 대한 반응형 스타일 */
 @media screen and (max-width: 768px) {
+  .myGroupContainer {
+    width: 70vw !important; /* 작은 화면에서는 너비를 90%로 설정 */
+    margin-bottom: 20px;
+    padding: 20px 24px; /* 패딩을 줄여서 공간을 절약 */
+    flex-direction: column; /* 세로 방향으로 배치 */
+  }
 
-    .myGroupContainer {
-        width: 47vw;
-        border: 1px solid #D4D2E3;
-        border-radius: 24px;
-        background-color: white;
-        margin-bottom: 20px;
-        padding: 30px 36px;
+  /* 그룹 버튼 영역 스타일 */
+  .myGroupContainer .myGroupButton {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px; /* 버튼들 간의 상단 간격을 추가 */
+  }
 
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: space-between;
-    }
+  .myGroupContainer .myGroupButton button {
+    margin-left: 0px; /* 왼쪽 마진을 없앰 */
+    padding: 8px 16px; /* 버튼 크기를 유지 */
+    width: 80%; /* 버튼 너비를 더 크게 설정 */
+    text-align: center;
+  }
+}
 
-    .myGroupContainer .myGroupButton {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
+/* 매우 작은 화면(480px 이하)에서의 반응형 처리 */
+@media screen and (max-width: 480px) {
+  .myGroupContainer {
+    width: 100vw; /* 화면의 100% 너비 */
+    padding: 15px 20px; /* 작은 화면에서는 더 작은 패딩 */
+  }
 
-    }
+  .myGroupContainer .myGroupButton {
+    flex-direction: column; /* 버튼들이 세로로 배치 */
+    gap: 10px; /* 버튼 간의 간격 추가 */
+  }
 
-    .myGroupContainer .myGroupButton button {
-        margin-left: 0px;
-        padding: 0 4px;
-        width: 50%;
-    }
-
-
+  .myGroupContainer .myGroupButton button {
+    width: 100%; /* 버튼을 화면에 맞게 100% 너비로 설정 */
+    padding: 10px 20px; /* 버튼 패딩을 키워서 더 클릭하기 쉽게 */
+  }
 }

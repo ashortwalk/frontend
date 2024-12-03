@@ -4,8 +4,11 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap; /* 화면 크기에 따라 페이지 번호들이 자동으로 줄바꿈되도록 */
+  margin: 20px 0; /* 여백을 추가 */
 }
 
+/* 페이지 버튼 스타일 */
 .page-btn {
   width: 10px;
   height: 10px;
@@ -13,36 +16,96 @@
   background-color: #dcdcdc;
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #333; /* 기본 텍스트 색상 */
 }
 
+/* 비활성화된 페이지 버튼 */
 .page-btn:disabled {
   cursor: not-allowed;
-  background-color: #dcdcdc;
+  background-color: #e0e0e0;
 }
 
+/* 페이지 버튼에 호버 시 스타일 */
 .page-btn:hover:not(:disabled) {
   background-color: #0094ff;
   color: white;
 }
 
+/* 페이지 버튼 포커스 시 */
 .page-btn:focus {
   outline: none;
 }
 
+/* 활성화된 페이지 버튼 */
 .page-btn.active {
   background-color: #0094ff;
   color: white;
 }
 
-/* 이전/다음 버튼에 여백 추가 */
+/* 이전/다음 버튼 스타일 */
 .prev-btn,
 .next-btn {
-  padding: 0 15px;
-  /* 좌우에 여백을 추가 */
+  padding: 5px 15px;
   font-size: 18px;
-  /* 버튼의 크기 증가 */
   border: none;
-
   color: #72b6ff;
   background-color: transparent;
+  cursor: pointer;
+}
+
+/* 이전/다음 버튼 호버 시 */
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* 이전/다음 버튼 비활성화 */
+.prev-btn:disabled,
+.next-btn:disabled {
+  cursor: not-allowed;
+  color: #dcdcdc;
+}
+
+/* 반응형 - 작은 화면에서 버튼 크기 조정 */
+@media screen and (max-width: 768px) {
+  /* 페이지 버튼 크기 조정 */
+  .page-btn {
+    border-radius: 10px !important;
+    width: 10px;
+    height: 10px;
+    font-size: 5px;
+  }
+
+  /* 이전/다음 버튼 크기 조정 */
+  .prev-btn,
+  .next-btn {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+
+  /* 페이지 번호들 줄바꿈 */
+  .pagination {
+    flex-direction: row;
+    gap: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* 페이지 버튼 크기 조정 */
+  .page-btn {
+    width: 10px;
+    height: 10px;
+    font-size: 5px;
+  }
+
+  /* 이전/다음 버튼 크기 조정 */
+  .prev-btn,
+  .next-btn {
+    font-size: 18px;
+    padding: 5px 8px;
+  }
 }

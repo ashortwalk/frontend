@@ -4,8 +4,9 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 40vmin; /* 로고 크기 */
   pointer-events: none;
+  max-width: 100%; /* 로고 크기가 화면을 넘어가지 않도록 최대 너비를 설정 */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -23,6 +24,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 40px 24px; /* 모바일에서 충분한 여백을 주기 위해 추가 */
 }
 
 .App-link {
@@ -44,12 +46,39 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: 90px;
+  gap: 20px; /* 각 항목 간의 간격을 추가 */
 }
 
 @media (max-width: 768px) {
   .main-content {
-    flex-direction: column;
-    gap: 80px;
-    padding: 30px 60px;
+    flex-direction: column; /* 화면이 좁을 때 세로로 나열 */
+    gap: 30px; /* 세로 레이아웃에서 항목 간의 간격 */
+    padding: 30px 20px; /* 모바일에서 여백을 줄이기 */
+  }
+
+  .App-logo {
+    height: 20vmin; /* 모바일 화면에서는 로고 크기를 작게 조정 */
+  }
+
+  .App-header {
+    font-size: calc(10px + 4vmin); /* 글씨 크기를 화면 크기에 맞게 조정 */
+    padding: 20px 16px; /* 모바일에서 패딩을 더 줄여줌 */
+  }
+}
+
+@media (max-width: 480px) {
+  .App-logo {
+    height: 15vmin; /* 더욱 작은 화면에서는 로고 크기 축소 */
+  }
+
+  .main-content {
+    padding: 20px; /* 화면이 더 작은 경우 여백을 최소화 */
+    gap: 20px; /* 작은 화면에서는 간격을 줄임 */
+  }
+
+  .App-header {
+    font-size: calc(
+      10px + 3vmin
+    ); /* 작은 화면에서 글자 크기를 더 줄여서 적절하게 보이도록 설정 */
   }
 }

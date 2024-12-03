@@ -1,19 +1,16 @@
 import React from "react";
-import './Group.css'
+import "./Group.css";
 
 export default function Group({ groups }) {
   const authorization = sessionStorage.getItem("Authorization");
   const handleJoinGroup = (groupId) => {
-    fetch(
-      `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/members`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: authorization,
-        },
-      }
-    )
+    fetch(`http://localhost:8000/api/groups/${groupId}/members`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: authorization,
+      },
+    })
       .then((response) => {
         if (response.ok) {
           alert("그룹 가입이 완료되었습니다.");
@@ -23,8 +20,8 @@ export default function Group({ groups }) {
         }
         return response.json();
       })
-      .then((data) => { })
-      .catch((error) => { });
+      .then((data) => {})
+      .catch((error) => {});
   };
 
   return (

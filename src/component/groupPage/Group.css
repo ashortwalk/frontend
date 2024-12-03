@@ -1,58 +1,56 @@
 .GroupComponent {
-    /* width: 100%; */
+  /* width: 100%; */
 }
 
-
 .GroupComponent .group-Container {
-    width: 35VW;
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: space-between;
+  width: 35vw;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
 
-    border: 1px solid #D4D2E3;
-    border-radius: 24px;
-    background-color: white;
-    margin-bottom: 20px;
-    padding: 30px 36px;
-    box-sizing: border-box;
+  border: 1px solid #d4d2e3;
+  border-radius: 24px;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 30px 36px;
+  box-sizing: border-box;
 }
 
 .GroupComponent .group-Container .group-Container-Detail {
-    text-align: start;
+  text-align: start;
 }
 
 .GroupComponent .group-Container .group-Container-Detail h3 {
-    margin: 0;
+  margin: 0;
 }
 
 .GroupComponent .group-Container .group-Container-Detail p {
-    font-size: 14px;
-    color: #A0A3BD;
-    line-height: 16px;
+  font-size: 14px;
+  color: #a0a3bd;
+  line-height: 16px;
 }
 
 .GroupComponent .group-Container .group-join-button {
-    background-color: white;
-    border: none;
-    color: #0094ff;
-    font-size: 14px;
-    cursor: pointer;
-    display: inline-block;
-    padding: 0 4px;
+  background-color: white;
+  border: none;
+  color: #0094ff;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 4px;
 }
 
-
 @media screen and (max-width: 768px) {
-    .GroupComponent .group-Container {
-        width: 60VW;
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
-    }
+  .GroupComponent .group-Container {
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
 
-    .GroupComponent .group-Container .group-join-button {
-        width: 100%;
-    }
+  .GroupComponent .group-Container .group-join-button {
+    width: 100%;
+  }
 }

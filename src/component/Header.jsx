@@ -30,7 +30,7 @@ export default function Header() {
     async function authCheck() {
       try {
         const response = await axios.get(
-          "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/auth/check",
+          "http://localhost:8000/api/auth/check",
           {
             headers: { Authorization: authorization },
           }
@@ -55,16 +55,13 @@ export default function Header() {
     // refreshAccessToken 함수 정의
     async function refreshAccessToken() {
       try {
-        const response = await fetch(
-          "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/auth/refresh",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: token, // `Bearer` 방식으로 전달
-            },
-          }
-        );
+        const response = await fetch("http://localhost:8000/api/auth/refresh", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token, // `Bearer` 방식으로 전달
+          },
+        });
         console.log("리프레시 토큰 작동");
 
         if (response.status === 401) {

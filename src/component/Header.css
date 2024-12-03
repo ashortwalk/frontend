@@ -112,6 +112,7 @@ h1:hover {
 
 .navMenu.active,
 .hamburger-buttonBox.active {
+  width: 150px;
   display: flex;
 }
 
@@ -127,6 +128,7 @@ h1:hover {
   }
 
   .navMenu {
+    pointer-events: none;
     display: flex;
     position: absolute;
     top: 80px;
@@ -145,11 +147,12 @@ h1:hover {
   }
 
   .buttonBox button {
-    width: 250px;
+    width: 150px;
     border: solid 2px #0094ff;
   }
 
   .navMenu.active {
+    pointer-events: auto;
     display: flex;
     opacity: 1;
     transform: translateY(0);

@@ -5,7 +5,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import PostImgContent from "./PostImgContent";
 import PostCommentContent from "./PostCommentContent";
-
+import "./Post.css";
 const Post = () => {
   const { id } = useParams(); // URL에서 ID 가져오기
   const [data, setData] = useState(null); // API에서 가져온 데이터
@@ -16,9 +16,7 @@ const Post = () => {
     const fetchPost = async () => {
       try {
         setLoading(true); // 로딩 시작
-        const result = await axios.get(
-          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/posts/${id}`
-        );
+        const result = await axios.get(`http://localhost:8000/api/posts/${id}`);
         setData(result.data); // 데이터 설정
       } catch (err) {
         setError(err); // 에러 설정

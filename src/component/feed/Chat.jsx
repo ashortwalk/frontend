@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 import axios from "axios";
 import "./Chat.css";
-const SOCKET_URL =
-  "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/chat";
+const SOCKET_URL = "http://localhost:8000/chat";
 
 const ChatComponent = ({ myGroup }) => {
   const socketRef = useRef(null);
@@ -18,10 +17,9 @@ const ChatComponent = ({ myGroup }) => {
   useEffect(() => {
     try {
       const findNickname = async () => {
-        const response = await axios.get(
-          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/users`,
-          { headers: { authorization: token } }
-        );
+        const response = await axios.get(`http://localhost:8000/api/users`, {
+          headers: { authorization: token },
+        });
         setNickname(response.data.nickname);
       };
       findNickname();
@@ -72,7 +70,6 @@ const ChatComponent = ({ myGroup }) => {
         <div>
           <p className="chat-notice">
             📣 당신과 대화를 나누는 상대는 누군가의 소중한 금지옥엽입니다.
-            융숭한 대접 부탁드립니다.
           </p>
           <div
             ref={messageListRef}
@@ -83,20 +80,24 @@ const ChatComponent = ({ myGroup }) => {
             }}
           >
             {messages.map((msg, idx) => {
-              if (msg.nickname == nickname)
+              const content = msg.content || "No content";
+              const nickname = msg.nickname || "Anonymous";
+
+              if (msg.nickname === nickname) {
                 return (
                   <div className="my-chat-box" key={idx}>
-                    <p> {msg.content}</p>
-                    <p className="chat-nickname">{msg.nickname}</p>
+                    <p>{content}</p>
+                    <p className="chat-nickname">{nickname}</p>
                   </div>
                 );
-              else
+              } else {
                 return (
                   <div className="chat-box" key={idx}>
-                    <p> {msg.content}</p>
-                    <p className="chat-nickname">{msg.nickname}</p>
+                    <p>{content}</p>
+                    <p className="chat-nickname">{nickname}</p>
                   </div>
                 );
+              }
             })}
           </div>
 
@@ -118,7 +119,7 @@ const ChatComponent = ({ myGroup }) => {
                 handleSendMessage();
               }}
             >
-              Send
+              전송
             </button>
           </div>
         </div>

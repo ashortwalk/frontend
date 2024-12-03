@@ -14,7 +14,7 @@ export default function ReportPage() {
     const authorization = window.sessionStorage.getItem("Authorization");
 
     const response = await axios.post(
-      `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/reports`,
+      `http://localhost:8000/api/reports`,
       body,
       {
         headers: { Authorization: authorization },

@@ -65,6 +65,8 @@
 }
 
 /* Responsive Styles */
+
+/* Tablet screens (max-width: 1024px) */
 @media (max-width: 1024px) {
   .PostImgContent {
     margin-right: 30px;
@@ -94,6 +96,7 @@
   }
 }
 
+/* Mobile screens (max-width: 768px) */
 @media (max-width: 768px) {
   .PostImgContent {
     margin-right: 20px;
@@ -122,7 +125,14 @@
     font-size: 12px;
   }
 }
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+/* Small mobile screens (max-width: 480px) */
 @media (max-width: 480px) {
   .PostImgContent {
     margin-right: 0;

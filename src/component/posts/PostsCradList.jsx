@@ -11,16 +11,14 @@ export default function PostsCardList() {
   useEffect(() => {
     const findPost = async () => {
       const response = await axios.get(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/posts?page=${currentPage}`
+        `http://localhost:8000/api/posts?page=${currentPage}`
       );
       const data = response.data;
       Setposts(data);
     };
 
     const findTotalPages = async () => {
-      const response = await axios.get(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/posts/count`
-      );
+      const response = await axios.get(`http://localhost:8000/api/posts/count`);
       const data = response.data;
 
       settotalPages(data.count);

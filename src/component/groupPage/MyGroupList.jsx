@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from "react";
 import MyGroup from "./MyGroup";
+import Pagination from "../posts/Pagination";
 
 export default function MyGroupList() {
   const token = window.sessionStorage.getItem("Authorization");
   const [groups, SetGroups] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   useEffect(() => {
     // 컴포넌트가 마운트될 때 API 호출
     const fetchData = async () => {
-      fetch(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/mygroups`,
+      const countResponse = await fetch(
+        `http://localhost:8000/api/groups/mygroups/count`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      const count = await countResponse.json();
+      setTotalPages(count);
+      await fetch(
+        `http://localhost:8000/api/groups/mygroups?page=${currentPage}`,
         {
           method: "GET",
           headers: {
@@ -29,11 +43,16 @@ export default function MyGroupList() {
     };
 
     fetchData();
-  }, []);
+  }, [currentPage, token]);
 
   return (
     <div className="">
       <MyGroup groups={groups}></MyGroup>
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+      ></Pagination>
     </div>
   );
 }

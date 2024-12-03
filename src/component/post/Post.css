@@ -1,0 +1,36 @@
+/* Default Styles */
+.main-content {
+  display: flex;
+  flex-direction: row; /* Align items horizontally by default */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+}
+
+/* Responsive Styles */
+
+/* For Tablet screens (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .main-content {
+    flex-direction: column; /* Stack items vertically on tablets */
+    align-items: center; /* Center the items vertically */
+    justify-content: center; /* Center the items horizontally */
+  }
+}
+
+/* For Mobile screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: center; /* Center the items vertically */
+    justify-content: center; /* Center the items horizontally */
+  }
+}
+
+/* For Small Mobile screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .main-content {
+    flex-direction: column; /* Ensure the items stack vertically on small mobile screens */
+    align-items: center; /* Center items on small screens */
+    justify-content: center; /* Center items horizontally */
+  }
+}

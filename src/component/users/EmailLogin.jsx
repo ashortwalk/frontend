@@ -17,18 +17,13 @@ export default function EmailLogin() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // 기본 폼 제출 동작 방지
-
-    await fetch(
-      "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/auth/login",
-      {
-        method: "POST", // POST 요청
-        headers: {
-          "Content-Type": "application/json", // JSON 형식으로 전송
-        },
-        body: JSON.stringify({ email, password }), // 이메일을 JSON 형태로 전송
-      }
-    )
+    await fetch("http://localhost:8000/api/auth/login", {
+      method: "POST", // POST 요청
+      headers: {
+        "Content-Type": "application/json", // JSON 형식으로 전송
+      },
+      body: JSON.stringify({ email, password }), // 이메일을 JSON 형태로 전송
+    })
       .then((response) => {
         if (response.ok) {
           alert("로그인이 완료되었습니다.");

@@ -10,10 +10,9 @@ export default function MyPage() {
   const authorization = sessionStorage.getItem("Authorization");
   try {
     const findNickname = async () => {
-      const response = await axios.get(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/users`,
-        { headers: { authorization } }
-      );
+      const response = await axios.get(`http://localhost:8000/api/users`, {
+        headers: { authorization },
+      });
       setNickname(response.data.nickname);
     };
     findNickname();

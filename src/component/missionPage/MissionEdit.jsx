@@ -1,14 +1,16 @@
 import Footer from "../Footer";
 import Header from "../Header";
-import React, { useState } from "react";
-import "./Mission.css";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+import "./Mission.css";
 
 export default function MissionEdit() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const token = window.sessionStorage.getItem("Authorization");
   const { groupId, missionId } = useParams();
+
   const handleInputChange = (e) => {
     if ("title" === e.target.id) {
       setTitle(e.target.value.trim());
@@ -18,10 +20,10 @@ export default function MissionEdit() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
-    fetch(
-      `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/missions/${missionId}`,
+    await fetch(
+      `http://localhost:8000/api/groups/${groupId}/missions/${missionId}`,
       {
         method: "PATCH", // POST 요청
         headers: {
@@ -32,9 +34,9 @@ export default function MissionEdit() {
       }
     )
       .then((response) => {
-        if (300 > response.status >= 200) {
-          window.location.href = "/groups";
+        if (200 <= response.status < 300) {
           alert("미션 수정 완료되었습니다.");
+          window.history.back();
         } else {
           alert("미션 수정 실패되었습니다.");
         }
@@ -43,6 +45,18 @@ export default function MissionEdit() {
       .then((data) => {})
       .catch((error) => {});
   };
+
+  useEffect(() => {
+    const findMission = async () => {
+      const response = await axios.get(
+        `http://localhost:8000/api/groups/${groupId}/missions`,
+        { headers: { authorization: token } }
+      );
+      setTitle(response.data.title);
+      setContent(response.data.content);
+    };
+    findMission();
+  }, []);
 
   return (
     <div>
@@ -53,6 +67,7 @@ export default function MissionEdit() {
           <div className="form-row">
             <label>제목</label>
             <input
+              value={title}
               type="text"
               id="title"
               className="input2"
@@ -61,12 +76,13 @@ export default function MissionEdit() {
           </div>
           <div className="form-row">
             <label>내용</label>
-            <textarea
+            <input
+              value={content}
               type="text"
               id="content"
               className="textarea2"
               onChange={handleInputChange}
-            ></textarea>
+            />
           </div>
           <button onClick={handleSubmit}>생성</button>
         </div>

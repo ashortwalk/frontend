@@ -1,6 +1,7 @@
 .PostsCardList > button {
-  margin: 20px 100px;
-  width: 101px;
+  margin: 20px auto; /* 좌우 여백을 auto로 설정해 버튼을 가운데 정렬 */
+  width: 100%; /* 기본적으로 화면 크기에 맞게 버튼을 100%로 확장 */
+  max-width: 100px; /* 최대 너비를 설정하여 너무 크지 않도록 제한 */
   height: 53px;
   background-color: #0094ff;
   border-radius: 24px;
@@ -9,4 +10,43 @@
   font-weight: bold;
   color: #fff;
   cursor: pointer;
+  transition: background-color 0.3s ease; /* 호버 시 배경색 변경 효과 */
+}
+
+.PostsCardList > button:hover {
+  background-color: #007acc; /* 호버 시 색상 변경 */
+}
+
+.Board {
+  padding: 0px 100px 100px 100px;
+}
+
+/* 반응형 디자인 - 화면 너비가 768px 이하일 때 */
+@media screen and (max-width: 768px) {
+  .PostsCardList > button {
+    width: 80%; /* 화면 크기에 맞게 버튼 너비를 80%로 설정 */
+    height: 45px; /* 작은 화면에서는 버튼 높이를 약간 줄임 */
+    font-size: 14px; /* 폰트 크기도 줄여서 화면에 맞게 표시 */
+    margin: 15px auto; /* 여백을 조금 더 줄여서 공간을 절약 */
+  }
+  .Board {
+    padding: 0px 50px 50px 50px;
+  }
+}
+
+/* 반응형 디자인 - 화면 너비가 480px 이하일 때 */
+@media screen and (max-width: 480px) {
+  .PostsCardList > button {
+    width: 80%; /* 더 작은 화면에서는 버튼 너비를 90%로 설정 */
+    height: 40px; /* 버튼 높이를 좀 더 줄임 */
+    font-size: 12px; /* 폰트 크기를 더 줄여서 버튼 안에 텍스트가 잘리지 않도록 */
+    margin: 10px auto; /* 여백을 더 줄여서 버튼이 화면에 적절히 배치되도록 */
+  }
+  .Board {
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

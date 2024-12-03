@@ -36,7 +36,7 @@ export default function Chart() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/statistics/category",
+          "http://localhost:8000/api/statistics/category",
           {
             headers: {
               Authorization: window.sessionStorage.getItem("Authorization"),

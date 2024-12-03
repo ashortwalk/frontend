@@ -1,30 +1,16 @@
-.FeedPage {
-}
-
-/* 피드내용과 피드채팅 부모 */
+/* Base Styles for Larger Screens (Desktop/Tablets) */
 .FeedPage .FPmainContent {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: row; /* Horizontal layout on larger screens */
+  align-items: flex-start; /* Align content at the top */
   justify-content: center;
   gap: 3%;
 }
 
-/*************** 피드내용 */
 .FeedPage .FPmainContent .FeedContent {
   margin: 0 auto;
-  width: 651px;
-}
-
-/* 그룹 설명, 피드생성 버틑 */
-.FeedPage .FPmainContent .FeedContent .FeedInfo {
-}
-
-.FeedPage .FPmainContent .FeedContent .FeedInfo .FeedInfoText {
-}
-
-.FeedPage .FPmainContent .FeedContent .FeedInfo .FeedInfoText h2 {
+  width: 651px; /* Fixed width for larger screens */
 }
 
 .FeedPage .FPmainContent .FeedContent .FeedInfo .FeedInfoText p {
@@ -53,7 +39,7 @@
 
 .FeedPage .FPmainContent .FeedContent .FeedInfo form > button {
   font-size: 16px;
-  font-style: bold;
+  font-weight: bold;
   width: 25%;
   height: 52px;
   border: none;
@@ -73,14 +59,15 @@
   color: #0094ff;
   border: 1px solid white;
   background-color: white;
+  margin-top: 10px;
 }
 
-.mission-complete-button {
+.mission-complete-button,
+.mission-totally-compelete-button {
   margin-right: 10px;
-  float: right;
   font-size: 12px;
   font-weight: 900;
-  width: 14%;
+  width: 20%;
   height: 30px;
   border: none;
   border-radius: 24px;
@@ -88,6 +75,7 @@
   border: 1px solid white;
   background-color: white;
 }
+
 .mission-button-box {
   display: flex;
   flex-direction: row;
@@ -96,23 +84,33 @@
   gap: 20px;
   width: 100%;
 }
+
 .mission-inner-box {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
+
 .mission-inner-box > p {
   color: white !important;
   font-size: 18px !important;
 }
+
 .mission-box > p,
 .mission-notice {
+  width: 100%;
   color: white !important;
 }
+
+.mission-notice {
+  font-weight: 800;
+}
+
 .mission-box > h2 {
   color: white;
 }
+
 .mission-box {
   color: white;
   border-radius: 20px;
@@ -121,16 +119,7 @@
   margin: 30px 0px !important;
 }
 
-/* 피드목록들 */
-.FeedPage .FPmainContent .FeedContent .FeedList {
-}
-
-.FeedPage .FPmainContent .FeedContent .FeedList .FeedListContent {
-}
-
-.FeedPage .FPmainContent .FeedContent .FeedList .FeedListContent .FeedChange {
-}
-
+/* Feed List and Feed Item Styles */
 .FeedPage
   .FPmainContent
   .FeedContent
@@ -152,31 +141,12 @@
   .FeedList
   .FeedListContent
   .FeedChange
-  .CFeedinput {
-}
-
-.FeedPage
-  .FPmainContent
-  .FeedContent
-  .FeedList
-  .FeedListContent
-  .FeedChange
   .CFeeddetail {
   display: flex;
   flex-direction: row;
   align-items: start;
   justify-content: space-between;
   box-sizing: border-box;
-}
-
-.FeedPage
-  .FPmainContent
-  .FeedContent
-  .FeedList
-  .FeedListContent
-  .FeedChange
-  .CFeeddetail
-  .feeddetailBox {
 }
 
 .FeedPage
@@ -210,31 +180,133 @@
   padding: 0 4px;
 }
 
-/************** 피드채팅 */
+/* Feed Chat Styles */
 .FeedPage .FPmainContent .FeedChating {
   margin: 0 auto;
   width: 651px;
 }
-
+.mission-notice {
+  padding: 10px 0px;
+}
 /* For Mobile Screens */
 @media screen and (max-width: 768px) {
-  /* 피드내용과 피드채팅 부모 */
+  /* Feed Page Layout */
   .FeedPage .FPmainContent {
-    flex-direction: column;
+    flex-direction: column; /* Stack content vertically on smaller screens */
     gap: 3%;
+    padding: 10px; /* Add padding for smaller screens */
   }
 
-  /*************** 피드내용 */
+  /* Feed Content */
   .FeedPage .FPmainContent .FeedContent {
     margin: 0 auto;
-    width: 90%;
-    max-width: 651px;
+    width: 80%;
+    max-width: none; /* Remove max-width restriction */
   }
 
-  /************** 피드채팅 */
+  /* Feed Chat */
   .FeedPage .FPmainContent .FeedChating {
     margin: 0 auto;
-    width: 90%;
-    max-width: 651px;
+    width: 80% !important;
+    max-width: none;
+  }
+
+  /* Mission Box: Adjust padding and font size */
+  .mission-box {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  /* Button Size and Layout */
+  .mission-create-button,
+  .mission-edit-button,
+  .mission-complete-button,
+  .mission-totally-compelete-button {
+    font-size: 10px;
+    width: 40%; /* Make buttons more compact */
+    height: 25px;
+  }
+
+  /* Feed Content Form */
+  .FeedPage .FPmainContent .FeedContent .FeedInfo form > input {
+    width: 65%; /* Take up less space */
+    height: 35px;
+    padding-left: 20px;
+    margin-right: 5%;
+  }
+
+  .FeedPage .FPmainContent .FeedContent .FeedInfo form > button {
+    font-size: 14px;
+    width: 30%; /* Make button smaller */
+    height: 40px;
+  }
+
+  /* Feed List Layout */
+  .FeedPage
+    .FPmainContent
+    .FeedContent
+    .FeedList
+    .FeedListContent
+    .FeedChange
+    > div {
+    padding: 20px;
+  }
+
+  /* Change Feed Layout */
+  .FeedPage
+    .FPmainContent
+    .FeedContent
+    .FeedList
+    .FeedListContent
+    .FeedChange
+    .CFeeddetail {
+    flex-direction: column; /* Stack elements vertically for smaller screens */
+    gap: 10px;
+  }
+
+  /* Feed Chat Box */
+  .FeedPage .FPmainContent .FeedChating {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .FeedPage .FPmainContent .FeedChating .chat-input-box input {
+    width: 80%; /* Make the input box more responsive */
+  }
+
+  .FeedPage .FPmainContent .FeedChating .chat-input-box button {
+    width: 15%; /* Reduce button width */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Further adjustments for small mobile screens */
+
+  .FeedPage .FPmainContent .FeedContent .FeedInfo form > input {
+    width: 60%; /* Further reduce the input width */
+    height: 30px; /* Adjust height */
+  }
+
+  .FeedPage .FPmainContent .FeedContent .FeedInfo form > button {
+    width: 35%; /* Make button slightly smaller */
+    height: 38px;
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .mission-create-button,
+  .mission-edit-button,
+  .mission-complete-button,
+  .mission-totally-compelete-button {
+    font-size: 8px;
+    width: 45%;
+    height: 22px;
+  }
+
+  .FeedPage .FPmainContent .FeedChating .chat-input-box input {
+    width: 75%; /* Even smaller input field on very small screens */
+  }
+
+  .FeedPage .FPmainContent .FeedChating .chat-input-box button {
+    width: 20%; /* Adjust button size */
   }
 }

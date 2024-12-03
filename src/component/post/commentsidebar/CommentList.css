@@ -49,7 +49,7 @@
 @media (max-width: 768px) {
   /* For mobile screens */
   .CommentList .CommentListContent {
-    width: 80vw; /* Even larger width for mobile */
+    width: 70vw !important; /* Even larger width for mobile */
     padding: 20px 15px; /* Adjust padding for better fit */
   }
 

@@ -30,16 +30,13 @@ export default function SignUp() {
   const handleEmailSubmit = (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지d
 
-    fetch(
-      "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/auth/email",
-      {
-        method: "POST", // POST 요청
-        headers: {
-          "Content-Type": "application/json", // JSON 형식으로 전송
-        },
-        body: JSON.stringify({ email }), // 이메일을 JSON 형태로 전송
-      }
-    )
+    fetch("http://localhost:8000/api/auth/email", {
+      method: "POST", // POST 요청
+      headers: {
+        "Content-Type": "application/json", // JSON 형식으로 전송
+      },
+      body: JSON.stringify({ email }), // 이메일을 JSON 형태로 전송
+    })
       .then((response) => {
         if (response.status == 409) alert("중복된 계정이 존재합니다.");
         if (!response.ok) {
@@ -56,16 +53,13 @@ export default function SignUp() {
   const handleSignupSubmit = (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
 
-    fetch(
-      "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/auth/signup",
-      {
-        method: "POST", // POST 요청
-        headers: {
-          "Content-Type": "application/json", // JSON 형식으로 전송
-        },
-        body: JSON.stringify({ email, nickname, password }), // 이메일을 JSON 형태로 전송
-      }
-    )
+    fetch("http://localhost:8000/api/auth/signup", {
+      method: "POST", // POST 요청
+      headers: {
+        "Content-Type": "application/json", // JSON 형식으로 전송
+      },
+      body: JSON.stringify({ email, nickname, password }), // 이메일을 JSON 형태로 전송
+    })
       .then((response) => {
         if (response.status == 409) alert("중복된 계정이 존재합니다.");
 
@@ -87,16 +81,13 @@ export default function SignUp() {
   const handleVerifySubmit = (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
 
-    fetch(
-      "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/auth/verify",
-      {
-        method: "POST", // POST 요청
-        headers: {
-          "Content-Type": "application/json", // JSON 형식으로 전송
-        },
-        body: JSON.stringify({ email, number }), // 이메일을 JSON 형태로 전송
-      }
-    )
+    fetch("http://localhost:8000/api/auth/verify", {
+      method: "POST", // POST 요청
+      headers: {
+        "Content-Type": "application/json", // JSON 형식으로 전송
+      },
+      body: JSON.stringify({ email, number }), // 이메일을 JSON 형태로 전송
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("네트워크 응답에 문제가 있습니다.");

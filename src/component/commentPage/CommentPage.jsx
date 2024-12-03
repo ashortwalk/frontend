@@ -11,7 +11,7 @@ export default function CommentPage() {
   useEffect(() => {
     async function fetchComment() {
       const response = await axios.get(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/comments/${id}`,
+        `http://localhost:8000/api/comments/${id}`,
         { headers: { Authorization: sessionStorage.getItem("Authorization") } }
       );
       setComment(response.data);

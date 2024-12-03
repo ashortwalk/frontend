@@ -1,21 +1,57 @@
-.container {}
-
-
-.container .form-container {
-    width: auto;
-    height: auto;
-    padding: 60px;
+.container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box; /* 패딩을 포함한 전체 크기 계산 */
 }
 
-
+.container .form-container {
+  width: 40%;
+  height: auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  box-sizing: border-box;
+}
 
 .container .form-container button {
-    width: 100%;
-    height: 48px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 10px;
+  width: 30%;
+  height: 48px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #42adfb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* 호버 효과를 부드럽게 추가 */
+}
 
-    background-color: #42ADFB;
-    color: white;
+.container .form-container button:hover {
+  background-color: #0094ff;
+}
+
+/* 반응형 디자인 - 화면 너비가 768px 이하일 때 */
+@media screen and (max-width: 768px) {
+  .container .form-container {
+    padding: 30px; /* 작은 화면에서는 패딩을 줄여줌 */
+  }
+
+  .container .form-container button {
+    width: 100%;
+    height: 45px; /* 버튼 크기를 줄여줌 */
+    font-size: 14px; /* 버튼 폰트 크기를 줄임 */
+  }
+}
+
+/* 반응형 디자인 - 화면 너비가 480px 이하일 때 */
+@media screen and (max-width: 480px) {
+  .container .form-container {
+    padding: 20px; /* 더 작은 화면에서는 패딩을 추가로 줄임 */
+  }
+
+  .container .form-container button {
+    height: 40px; /* 버튼 크기 축소 */
+    font-size: 14px; /* 버튼 폰트 크기 유지 */
+  }
 }

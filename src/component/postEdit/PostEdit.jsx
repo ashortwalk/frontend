@@ -24,7 +24,7 @@ export default function PostEdit() {
     const fetchPost = async () => {
       try {
         const response = await axios.get(
-          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/posts/${postId}`,
+          `http://localhost:8000/api/posts/${postId}`,
           {
             headers: {
               Authorization: authorization,
@@ -78,7 +78,7 @@ export default function PostEdit() {
 
     try {
       const response = await axios.patch(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/posts/${postId}`,
+        `http://localhost:8000/api/posts/${postId}`,
         data,
         {
           headers: {
@@ -104,7 +104,7 @@ export default function PostEdit() {
           <div className="PWmain-content">
             <div className="EditImage">
               {preview ? (
-                <img src={preview} alt="" />
+                <img src={preview} alt="" className="preview" />
               ) : (
                 <div className="WimageBox"></div>
               )}

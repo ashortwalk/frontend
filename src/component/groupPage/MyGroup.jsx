@@ -12,16 +12,13 @@ export default function MyGroup({ groups }) {
     navigate(`/groups/${id}/update`, { state: dataToSend });
   };
   const handleSignOutButtonClick = (id) => {
-    fetch(
-      `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${id}/members`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      }
-    )
+    fetch(`http://localhost:8000/api/groups/${id}/members`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    })
       .then((response) => {
         if (response.ok) {
           alert("그룹 탈퇴 완료되었습니다.");
@@ -36,16 +33,13 @@ export default function MyGroup({ groups }) {
       .catch((error) => {});
   };
   const handelDeleteButtonClick = (id) => {
-    fetch(
-      `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      }
-    )
+    fetch(`http://localhost:8000/api/groups/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    })
       .then((response) => {
         if (response.ok) {
           alert("그룹 삭제 완료되었습니다.");
@@ -61,16 +55,13 @@ export default function MyGroup({ groups }) {
   };
   useState(() => {
     const fetchUserId = (id) => {
-      fetch(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/users`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-          },
-        }
-      )
+      fetch(`http://localhost:8000/api/users`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
         .then((response) => {
           return response.json();
         })
@@ -82,7 +73,7 @@ export default function MyGroup({ groups }) {
 
     fetchUserId();
   }, []);
-
+  console.log(groups);
   return (
     <div className="myGroup">
       {groups.map((group) => {
@@ -129,7 +120,7 @@ export default function MyGroup({ groups }) {
             )}
           </div>
         );
-      })}
+      })}{" "}
     </div>
   );
 }

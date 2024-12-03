@@ -1,7 +1,11 @@
 /* General Styles for Post Comment */
 .PostCommentContent {
   margin-bottom: 24px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 95vh;
 }
 
 /* Paragraph Styles */
@@ -9,29 +13,55 @@ p {
   font-size: 18px;
   line-height: 30px;
   color: #a0a3bd;
+  margin: 0;
 }
 
 /* Comment List Buttons */
 .CLCbutton {
-  width: 45vw;
+  width: 45vw; /* Default width for desktop */
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-end;
+  gap: 10px; /* Add gap between buttons */
 }
 
 /* Responsive Styles */
+
+/* Tablet screens (up to 1024px) */
 @media (max-width: 1024px) {
+  .PostCommentContent {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center !important;
+    height: auto;
+  }
+
+  input {
+    margin-right: 0 !important;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
   p {
     font-size: 16px; /* Adjust font size for better readability on tablets */
     line-height: 28px;
   }
 
   .CLCbutton {
-    width: 60vw; /* Increase width for better layout on smaller screens */
+    width: 65vw !important; /* Adjust width for tablets */
+    justify-content: center; /* Center the buttons for tablet view */
   }
 }
 
+/* Mobile screens (up to 768px) */
 @media (max-width: 768px) {
   p {
     font-size: 14px; /* Further reduce font size for mobile */
@@ -39,11 +69,13 @@ p {
   }
 
   .CLCbutton {
-    width: 70vw; /* Further increase width for mobile */
-    justify-content: flex-start; /* Align buttons to the left for mobile */
+    width: 65vw !important; /* Increase width for better layout on mobile */
+    justify-content: flex-end !important; /* Keep buttons centered on mobile */
+    gap: 8px; /* Reduce gap between buttons */
   }
 }
 
+/* Very small mobile screens (up to 480px) */
 @media (max-width: 480px) {
   p {
     font-size: 12px; /* Small font size for very small screens */
@@ -52,6 +84,7 @@ p {
 
   .CLCbutton {
     width: 80vw; /* Almost full width for small screens */
-    justify-content: flex-start; /* Keep buttons aligned to the left */
+    justify-content: center; /* Keep buttons centered */
+    gap: 6px; /* Even smaller gap on very small screens */
   }
 }

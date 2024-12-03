@@ -1,3 +1,4 @@
+/* 기본 스타일 */
 .chat-input {
   width: 80%;
   height: 30px;
@@ -5,6 +6,7 @@
   border: hsl(205, 100%, 50%) 1px solid;
   padding: 0px 5px;
 }
+
 .chat-input-box {
   display: flex;
   flex-direction: row;
@@ -15,7 +17,7 @@
 .chat-button {
   margin-left: 10px;
   font-size: 16px;
-  font-style: bold;
+  font-weight: bold; /* 'bold' 스타일 변경 */
   width: 10%;
   height: 30px;
   border: none;
@@ -37,6 +39,7 @@
   padding: 0px !important;
   color: black;
 }
+
 .my-chat-box > p {
   margin: 0px;
   padding: 0px;
@@ -46,15 +49,94 @@
 .my-chat-box {
   background-color: #0094ff;
 }
+
 .chat-box {
   border: #0094ff 1px solid;
 }
+
 .chat-nickname {
   font-size: 13px;
 }
+
 .chat-notice {
   font-size: 13px;
   margin: 0px 10px !important;
   padding: 0px !important;
   color: rgb(59, 59, 59);
+}
+
+/* 모바일 반응형 스타일 */
+@media (max-width: 768px) {
+  .chat-input {
+    width: 100%; /* 모바일 화면에서 가로폭을 100%로 확장 */
+    height: 40px; /* 모바일 화면에서 입력창 크기 약간 증가 */
+    font-size: 14px; /* 폰트 크기 줄이기 */
+    padding: 0px 10px; /* 좌우 패딩 증가 */
+  }
+
+  .chat-input-box {
+    width: 100%; /* 부모 컨테이너의 너비를 100%로 설정 */
+    justify-content: space-between; /* 입력창과 버튼 간 공간을 좀 더 확보 */
+  }
+
+  .chat-button {
+    font-size: 14px; /* 버튼의 폰트 크기 조정 */
+    width: 20%; /* 버튼 너비를 늘려서 클릭하기 쉽게 */
+    height: 40px; /* 버튼 크기 늘리기 */
+    margin-left: 5px; /* 버튼 간격을 좀 더 좁히기 */
+  }
+
+  .chat-box,
+  .my-chat-box {
+    width: 100%; /* 채팅 박스를 100%로 설정하여 모바일 화면에 맞추기 */
+    margin: 5px 0px; /* 상하 마진을 줄여 공간을 절약 */
+    padding: 8px; /* 채팅박스 안쪽 여백 감소 */
+  }
+
+  .chat-box > p,
+  .my-chat-box > p {
+    font-size: 12px; /* 작은 화면에서는 글자 크기를 조금 줄임 */
+  }
+
+  .chat-nickname {
+    font-size: 12px; /* 닉네임 폰트 크기 줄이기 */
+  }
+
+  .chat-notice {
+    font-size: 12px; /* 알림 폰트 크기 줄이기 */
+    margin: 0px 5px !important; /* 마진 조정 */
+  }
+}
+
+/* 더 작은 화면을 위한 스타일 */
+@media (max-width: 480px) {
+  .chat-input {
+    height: 45px; /* 작은 화면에서는 입력창을 조금 더 크게 */
+    padding: 0px 15px; /* 패딩을 조금 더 늘려서 더 편리하게 타이핑할 수 있도록 */
+  }
+
+  .chat-button {
+    font-size: 14px;
+    width: 30%; /* 버튼 너비를 더 넓게 설정 */
+    height: 45px; /* 버튼 높이도 약간 늘려서 모바일에서 더 누르기 쉽게 */
+  }
+
+  .chat-box,
+  .my-chat-box {
+    width: 100%; /* 화면 크기 축소에 맞게 박스를 100%로 맞춤 */
+    padding: 8px;
+  }
+
+  .chat-box > p,
+  .my-chat-box > p {
+    font-size: 12px;
+  }
+
+  .chat-nickname {
+    font-size: 11px; /* 닉네임 폰트 크기 추가 조정 */
+  }
+
+  .chat-notice {
+    font-size: 11px; /* 알림 글자 크기 줄이기 */
+  }
 }

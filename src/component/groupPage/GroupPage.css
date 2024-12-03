@@ -8,11 +8,11 @@
   padding: 40px;
   margin: 40px 0;
   box-sizing: border-box;
+  gap: 20px; /* 항목 간의 간격을 추가하여 더 깔끔하게 정렬 */
 }
 
 .group-outer-box {
-  /* width: 40vw; */
-  width: 90%;
+  width: 40vw; /* 기본 너비는 화면의 40% */
   height: 100vh;
   padding: 40px 60px;
   box-sizing: border-box;
@@ -21,6 +21,8 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  background-color: white; /* 기본 배경색 */
+  transition: all 0.3s ease; /* 반응형으로 화면이 변할 때 부드럽게 전환 */
 }
 
 .group-outer-box .mygroup-title-box {
@@ -28,7 +30,7 @@
 }
 
 .group-outer-box:last-child {
-  background-color: #E3F3FF;
+  background-color: #e3f3ff;
 }
 
 .group-outer-box:last-child .group-create-button {
@@ -53,26 +55,57 @@
   box-sizing: border-box;
 }
 
-
+/* 작은 화면에서의 반응형 처리 */
 @media screen and (max-width: 768px) {
+  .mygroup-title-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
   .group-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    padding: 40px;
+    height: auto; /* 화면 크기에 맞게 높이를 자동으로 조절 */
+    padding: 20px; /* 작은 화면에서는 패딩을 줄여줌 */
     width: 100%;
-    gap: 14px;
+    gap: 20px; /* 항목 간의 간격을 추가 */
   }
 
   .group-outer-box {
-    width: 80vw;
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 90vw; /* 화면 너비의 90% */
+    height: auto; /* 높이는 컨텐츠에 맞게 자동 조정 */
+    padding: 20px 30px !important; /* 패딩을 줄여주어 작은 화면에서 공간을 더 확보 */
   }
 
+  .group-outer-box:last-child .group-create-button button {
+    width: 120px; /* 버튼 너비를 줄여 작은 화면에 맞게 조정 */
+    height: 40px; /* 버튼 높이도 줄여서 모바일에서 보기 좋게 조정 */
+    font-size: 14px; /* 작은 화면에서 글자 크기 조정 */
+  }
+}
+
+/* 더 작은 화면(480px 이하)에서 반응형 처리 */
+@media screen and (max-width: 480px) {
+  .group-container {
+    padding: 10px; /* 더 작은 화면에서는 여백을 최소화 */
+    gap: 10px; /* 항목 간의 간격을 더 줄여줌 */
+  }
+
+  .group-outer-box {
+    width: 95vw; /* 화면 너비의 95% */
+    height: auto; /* 높이를 컨텐츠에 맞게 조정 */
+    padding: 15px 20px !important; /* 작은 화면에서는 패딩을 더 줄여줌 */
+  }
+
+  .group-outer-box:last-child .group-create-button button {
+    width: 100px; /* 버튼을 더욱 작게 만들어 작은 화면에 적합하게 */
+    height: 35px; /* 버튼 높이도 줄여줌 */
+    font-size: 12px; /* 버튼 글자 크기 작게 */
+  }
 }

@@ -30,7 +30,7 @@ export default function PostCommentContent() {
     try {
       const commentwite = async () => {
         const response = await axios.post(
-          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/posts/${postId}/comments`,
+          `http://localhost:8000/api/posts/${postId}/comments`,
           { content },
           {
             headers: {
@@ -51,7 +51,7 @@ export default function PostCommentContent() {
     const findComments = async () => {
       try {
         const response = await axios.get(
-          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/posts/${postId}/comments`,
+          `http://localhost:8000/api/posts/${postId}/comments`,
           {}
         );
         setComments(response.data);
@@ -70,7 +70,7 @@ export default function PostCommentContent() {
   const saveEditing = async (id) => {
     try {
       const response = await axios.patch(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/posts/${postId}/comments/${id}`,
+        `http://localhost:8000/api/posts/${postId}/comments/${id}`,
         { content: editingContent },
         {
           headers: {
@@ -162,7 +162,7 @@ export default function PostCommentContent() {
                           if (window.confirm("댓글을 삭제하시겠습니까?")) {
                             try {
                               await axios.delete(
-                                `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/posts/${postId}/comments/${comm.id}`,
+                                `http://localhost:8000/api/posts/${postId}/comments/${comm.id}`,
                                 {
                                   headers: {
                                     Authorization: authorization,

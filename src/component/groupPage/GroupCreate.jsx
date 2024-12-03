@@ -1,7 +1,7 @@
 import Footer from "../Footer";
 import Header from "../Header";
 import React, { useState } from "react";
-import './GroupCreate.css'
+import "./GroupCreate.css";
 
 export default function GroupCreate() {
   const [groupName, setGroupName] = useState("");
@@ -20,17 +20,14 @@ export default function GroupCreate() {
   const handleSubmit = (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
 
-    fetch(
-      "https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups",
-      {
-        method: "POST", // POST 요청
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify({ groupName, description }),
-      }
-    )
+    fetch("http://localhost:8000/api/groups", {
+      method: "POST", // POST 요청
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify({ groupName, description }),
+    })
       .then((response) => {
         if (response.ok) {
           alert("그룹생성 완료되었습니다.");
@@ -42,7 +39,7 @@ export default function GroupCreate() {
       .then((data) => {
         window.location.href = "/groups";
       })
-      .catch((error) => { });
+      .catch((error) => {});
   };
 
   return (
