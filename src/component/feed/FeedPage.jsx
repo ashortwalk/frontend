@@ -8,9 +8,7 @@ import Pagination from "../posts/Pagination";
 import Chat from "./Chat";
 
 export default function FeedPage() {
-  const [authorization, setAuthorization] = useState(
-    window.sessionStorage.getItem("Authorization")
-  );
+  const [authorization, setAuthorization] = useState("");
   const { groupId } = useParams();
   const [feedlist, setFeedlist] = useState([]); //피드 목록
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,6 +22,7 @@ export default function FeedPage() {
   //화면 레더링 시 feed목록가져오기  api/groups/:groupId/feeds
   useEffect(() => {
     try {
+      setAuthorization(    window.sessionStorage.getItem("Authorization"))
       const findTotalMemberCount = async () => {
         const response = await axios.get(
           `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/members/count`,
