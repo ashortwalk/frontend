@@ -22,18 +22,18 @@ export default function FeedPage() {
   //화면 레더링 시 feed목록가져오기  api/groups/:groupId/feeds
   useEffect(() => {
     try {
-      setAuthorization(    window.sessionStorage.getItem("Authorization"))
+      setAuthorization(window.sessionStorage.getItem("Authorization"));
       const findTotalMemberCount = async () => {
         const response = await axios.get(
           `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/members/count`,
-               { headers: { Authorization : authorization } }
+          { headers: { Authorization: authorization } }
         );
         setTotalMember(response.data);
       };
       const findCompleteCount = async () => {
         const response = await axios.get(
           `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes`,
-                { headers: { Authorization : authorization } }
+          { headers: { Authorization: authorization } }
         );
         setTotalCompelete(response.data);
       };
@@ -73,7 +73,7 @@ export default function FeedPage() {
       const isComplete = async () => {
         const response = await axios.get(
           `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes/check`,
-             { headers: { Authorization : authorization } }
+          { headers: { Authorization: authorization } }
         );
         if (response.data) {
           setIsComplete(true);
@@ -89,7 +89,7 @@ export default function FeedPage() {
       findCompleteCount();
       isComplete();
     } catch (err) {}
-  }, [currentPage, groupId, authorization, mission.ids]);
+  }, [currentPage, groupId, authorization, mission.id]);
 
   // const [feeds, setFeeds] = useState([]); //피드 목록상태
   const [content, setContent] = useState(""); //피드입력 상태
@@ -102,15 +102,17 @@ export default function FeedPage() {
     console.log(authorization);
     try {
       const response = await axios.post(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes`,{},
-        { headers: { Authorization : authorization } }
+        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes`,
+        {},
+        { headers: { Authorization: authorization } }
       );
       console.log(response);
-      if(response.status==200||response.status==201){setIsComplete(true);
-        alert("미션 완료에 성공하였습니다.")
+      if (response.status == 200 || response.status == 201) {
+        setIsComplete(true);
+        alert("미션 완료에 성공하였습니다.");
       }
     } catch (err) {
-      alert("미션 완료에 실패하였습니다.")
+      alert("미션 완료에 실패하였습니다.");
     }
 
     setIsComplete(true);
