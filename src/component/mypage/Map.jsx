@@ -21,7 +21,7 @@ export default function Map() {
   // Azure Key 호출
   useEffect(() => {
     const fetchKeys = async () => {
-      const response = await fetch("http://localhost:3000/api/key");
+      const response = await fetch("http://localhost:8000/api/key");
       const data = await response.json();
       setGptKey(data.gptKey);
       setSttKey(data.sttKey);

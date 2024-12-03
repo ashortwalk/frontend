@@ -10,7 +10,7 @@ export default function GroupList() {
   useEffect(() => {
     const findGroup = async () => {
       const response = await axios.get(
-        `http://localhost:3000/api/groups?page=${currentPage}`
+        `http://localhost:8000/api/groups?page=${currentPage}`
       );
       const data = response.data;
       SetGroups(data);
@@ -18,7 +18,7 @@ export default function GroupList() {
 
     const findTotalPages = async () => {
       const response = await axios.get(
-        `http://localhost:3000/api/groups/count`
+        `http://localhost:8000/api/groups/count`
       );
       const data = response.data;
       setTotalPages(data);

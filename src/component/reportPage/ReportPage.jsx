@@ -14,7 +14,7 @@ export default function ReportPage() {
     const authorization = window.sessionStorage.getItem("Authorization");
 
     const response = await axios.post(
-      `http://localhost:3000/api/reports`,
+      `http://localhost:8000/api/reports`,
       body,
       {
         headers: { Authorization: authorization },

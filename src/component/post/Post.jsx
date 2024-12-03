@@ -16,7 +16,7 @@ const Post = () => {
     const fetchPost = async () => {
       try {
         setLoading(true); // 로딩 시작
-        const result = await axios.get(`http://localhost:3000/api/posts/${id}`);
+        const result = await axios.get(`http://localhost:8000/api/posts/${id}`);
         setData(result.data); // 데이터 설정
       } catch (err) {
         setError(err); // 에러 설정

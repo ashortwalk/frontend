@@ -4,7 +4,7 @@ import "./Group.css";
 export default function Group({ groups }) {
   const authorization = sessionStorage.getItem("Authorization");
   const handleJoinGroup = (groupId) => {
-    fetch(`http://localhost:3000/api/groups/${groupId}/members`, {
+    fetch(`http://localhost:8000/api/groups/${groupId}/members`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
