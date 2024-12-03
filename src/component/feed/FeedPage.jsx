@@ -89,7 +89,7 @@ export default function FeedPage() {
       findCompleteCount();
       isComplete();
     } catch (err) {}
-  }, [currentPage, groupId, authorization, mission.id]);
+  }, [currentPage, groupId, authorization, mission.id, isComplete]);
 
   // const [feeds, setFeeds] = useState([]); //피드 목록상태
   const [content, setContent] = useState(""); //피드입력 상태
