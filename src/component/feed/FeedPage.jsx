@@ -8,47 +8,111 @@ import Pagination from "../posts/Pagination";
 import Chat from "./Chat";
 
 export default function FeedPage() {
-  const authorization = window.sessionStorage.getItem("Authorization");
+  const [authorization, setAuthorization] = useState(
+    window.sessionStorage.getItem("Authorization")
+  );
   const { groupId } = useParams();
   const [feedlist, setFeedlist] = useState([]); //피드 목록
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [myGroup, setMyGroup] = useState({});
-
+  const [mission, setMission] = useState({});
+  const [user, setUser] = useState({});
+  const [totalMember, setTotalMember] = useState(0);
+  const [totalComplete, setTotalCompelete] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
   //화면 레더링 시 feed목록가져오기  api/groups/:groupId/feeds
   useEffect(() => {
-    const findFeed = async () => {
-      const response = await axios.get(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/feeds?page=${currentPage}`
-      );
-      setFeedlist(response.data);
-    };
-    const countFeeds = async () => {
-      const response = await axios.get(
-        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/feeds/count`
-      );
-      setTotalPages(response.data);
-    };
-    const findMyGroup = async () => {
-      try {
+    try {
+      const findTotalMemberCount = async () => {
+        const response = await axios.get(
+          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/members/count`,
+          { headers: { authorization } }
+        );
+        setTotalMember(response.data);
+      };
+      const findCompleteCount = async () => {
+        const response = await axios.get(
+          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes`,
+          { headers: { authorization } }
+        );
+        setTotalCompelete(response.data);
+      };
+      const findUser = async () => {
+        const response = await axios.get(
+          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/users`,
+          { headers: { authorization } }
+        );
+        setUser(response.data);
+      };
+      const findFeed = async () => {
+        const response = await axios.get(
+          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/feeds?page=${currentPage}`
+        );
+        setFeedlist(response.data);
+      };
+      const findMission = async () => {
+        const response = await axios.get(
+          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/missions`,
+          { headers: { Authorization: authorization } }
+        );
+        setMission(response.data);
+      };
+      const countFeeds = async () => {
+        const response = await axios.get(
+          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/feeds/count`
+        );
+        setTotalPages(response.data);
+      };
+      const findMyGroup = async () => {
         const response = await axios.get(
           `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}`
         );
 
         setMyGroup(response.data);
-      } catch (error) {}
-    };
+      };
+      const isComplete = async () => {
+        const response = await axios.get(
+          `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes/check`,
+          { headers: { authorization } }
+        );
+        if (response.data) {
+          setIsComplete(true);
+        }
+      };
 
-    findFeed();
-    countFeeds();
-    findMyGroup();
-  }, [currentPage, groupId]);
+      findFeed();
+      countFeeds();
+      findMyGroup();
+      findMission();
+      findUser();
+      findTotalMemberCount();
+      findCompleteCount();
+      isComplete();
+    } catch (err) {}
+  }, [currentPage, groupId, authorization, mission.ids]);
 
   // const [feeds, setFeeds] = useState([]); //피드 목록상태
   const [content, setContent] = useState(""); //피드입력 상태
 
   const [editingContentId, setEditingContentId] = useState(null); // 수정 중인 피드 ID
   const [editingContent, setEditingContent] = useState(""); // 수정 중인 피드 내용
+  console.log(totalComplete);
+  console.log(totalMember);
+  async function complete() {
+    console.log(authorization);
+    try {
+      const response = await axios.post(
+        `https://shortwalk-f3byftbfe4czehcg.koreacentral-01.azurewebsites.net/api/groups/${groupId}/completes`,
+        { headers: { authorization } }
+      );
+      console.log(response);
+    } catch (err) {
+      console.log("err" + err);
+    }
+
+    setIsComplete(true);
+  }
 
   //피드 content 입력창
   const handleSubmin = (e) => {
@@ -110,6 +174,7 @@ export default function FeedPage() {
     setEditingContentId(null);
     setEditingContent("");
   };
+
   //======================================================================================
   return (
     <div className="FeedPage">
@@ -124,19 +189,56 @@ export default function FeedPage() {
               <p>{myGroup.description}</p>
               <p>{myGroup.leaderNickname}</p>
               <div className="mission-box">
-                <h3>제목</h3>
-                <p>내용입니다.</p>
-                <div className="mission-button-box">
-                  <button
-                    className="mission-create-button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.location.href = `/groups/${groupId}/missions/create`;
-                    }}
-                  >
-                    미션 생성
-                  </button>
-                  <p>(3/9)</p>
+                <h3>{mission.title}</h3>
+                <p>{mission.content}</p>
+
+                <div className="mission-inner-box">
+                  {myGroup.leaderUserId == user.id ? (
+                    <div className="mission-button-box">
+                      {mission ? (
+                        <button
+                          className="mission-edit-button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `/groups/${groupId}/missions/edit`;
+                          }}
+                        >
+                          미션 수정
+                        </button>
+                      ) : (
+                        <button
+                          className="mission-create-button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = `/groups/${groupId}/missions/create`;
+                          }}
+                        >
+                          미션 생성
+                        </button>
+                      )}
+                      <p className="mission-notice">
+                        미션 수정은 완료자가 없을 때만 할 수 있습니다.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="mission-button-box"></div>
+                  )}
+                  {isComplete ? (
+                    <></>
+                  ) : (
+                    <button
+                      className="mission-complete-button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        complete();
+                      }}
+                    >
+                      미션 완료
+                    </button>
+                  )}
+                  <p>
+                    ({totalComplete}/{totalMember})
+                  </p>
                 </div>
               </div>
             </div>
