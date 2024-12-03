@@ -20,6 +20,7 @@ import GroupCreate from "./component/groupPage/GroupCreate.jsx";
 import GroupUpdate from "./component/groupPage/GroupUpdate.jsx";
 import ReportPage from "./component/reportPage/ReportPage.jsx";
 import FeedPage from "./component/feed/FeedPage.jsx";
+import MissionCreate from "./component/missionPage/MissionCreate.jsx";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
               element={<ReportPage />}
             />
             <Route path="/groups/:groupId/feeds" element={<FeedPage />} />
+            <Route path="/groups/:groupId/missions/create" element={<MissionCreate />} />
           </Routes>
         </Router>
       </ErrorBoundary>
