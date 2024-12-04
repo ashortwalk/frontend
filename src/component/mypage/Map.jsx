@@ -31,8 +31,6 @@ export default function Map() {
 
   // 지도 초기화
   useEffect(() => {
-    setDescriptions("");
-    setAddress("");
     const map = new window.Tmapv2.Map("map_div", {
       center: new window.Tmapv2.LatLng(37.566481622437934, 126.98502302169841),
       width: "300px",
@@ -96,6 +94,8 @@ export default function Map() {
 
   // GPT API 호출하여 경로 생성
   const gpt = async (address) => {
+    setDescriptions([]);
+    setAddress("");
     alert(
       "AI가 추천 경로를 탐색합니다. 잠시만 기다려 주세요. 최대 1분 소요됩니다."
     );
