@@ -17,14 +17,48 @@ p {
   margin: 0;
 }
 
+.CommentList .CommentListContent .CLCdetail {
+  width: 100%;
+}
+
+.CommentList .CommentListContent .CLCdetail .CLCeditChange {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: aqua; */
+}
+
+.CommentList .CommentListContent .CLCdetail .CLCeditChange>input {
+  padding: 6px 2px;
+  flex: 1;
+  border: solid 1px #d4d2e3;
+  border-radius: 10px;
+}
+
+.CommentList .CommentListContent .CLCdetail .CLCeditChange .CLCeditButtonBox {}
+
+.CommentList .CommentListContent .CLCdetail .CLCeditChange .CLCeditButtonBox button {
+  background-color: white;
+  border: none;
+  color: #0094ff;
+  display: inline-block;
+  margin-left: 16px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 /* Comment List Buttons */
 .CLCbutton {
-  width: 45vw; /* Default width for desktop */
+  width: 45vw;
+  /* Default width for desktop */
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-end;
-  gap: 10px; /* Add gap between buttons */
+  gap: 10px;
+  /* Add gap between buttons */
 }
 
 /* Responsive Styles */
@@ -52,40 +86,51 @@ p {
   }
 
   p {
-    font-size: 16px; /* Adjust font size for better readability on tablets */
+    font-size: 16px;
+    /* Adjust font size for better readability on tablets */
     line-height: 28px;
   }
 
   .CLCbutton {
-    width: 65vw !important; /* Adjust width for tablets */
-    justify-content: center; /* Center the buttons for tablet view */
+    width: 65vw !important;
+    /* Adjust width for tablets */
+    justify-content: center;
+    /* Center the buttons for tablet view */
   }
 }
 
 /* Mobile screens (up to 768px) */
 @media (max-width: 768px) {
   p {
-    font-size: 14px; /* Further reduce font size for mobile */
+    font-size: 14px;
+    /* Further reduce font size for mobile */
     line-height: 24px;
   }
 
   .CLCbutton {
-    width: 65vw !important; /* Increase width for better layout on mobile */
-    justify-content: flex-end !important; /* Keep buttons centered on mobile */
-    gap: 8px; /* Reduce gap between buttons */
+    width: 65vw !important;
+    /* Increase width for better layout on mobile */
+    justify-content: flex-end !important;
+    /* Keep buttons centered on mobile */
+    gap: 8px;
+    /* Reduce gap between buttons */
   }
 }
 
 /* Very small mobile screens (up to 480px) */
 @media (max-width: 480px) {
   p {
-    font-size: 12px; /* Small font size for very small screens */
+    font-size: 12px;
+    /* Small font size for very small screens */
     line-height: 22px;
   }
 
   .CLCbutton {
-    width: 80vw; /* Almost full width for small screens */
-    justify-content: center; /* Keep buttons centered */
-    gap: 6px; /* Even smaller gap on very small screens */
+    width: 80vw;
+    /* Almost full width for small screens */
+    justify-content: center;
+    /* Keep buttons centered */
+    gap: 6px;
+    /* Even smaller gap on very small screens */
   }
 }

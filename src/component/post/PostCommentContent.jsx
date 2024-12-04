@@ -43,7 +43,7 @@ export default function PostCommentContent() {
 
       setComments([...comments]);
       commentwite();
-    } catch (error) {}
+    } catch (error) { }
   };
 
   //===댓글 목록===
@@ -55,7 +55,7 @@ export default function PostCommentContent() {
           {}
         );
         setComments(response.data);
-      } catch (error) {}
+      } catch (error) { }
     };
     const findUser = async () => {
       const response = await axios.get(`http://20.41.86.171:8000/api/users`, {
@@ -94,7 +94,7 @@ export default function PostCommentContent() {
         )
       );
       setEditingCommentId(null); // 수정 모드 종료
-    } catch (error) {}
+    } catch (error) { }
   };
 
   // 댓글 수정 취소
@@ -129,7 +129,7 @@ export default function PostCommentContent() {
             <div key={comm.id} className="CommentListContent">
               <div className="CLCdetail">
                 {editingCommentId === comm.id ? (
-                  <div>
+                  <div className="CLCeditChange">
                     <input
                       value={editingContent}
                       onChange={(e) => setEditingContent(e.target.value)}
@@ -137,8 +137,10 @@ export default function PostCommentContent() {
                         if (e.key == "Enter") saveEditing(comm.id);
                       }}
                     />
-                    <button onClick={() => saveEditing(comm.id)}>저장</button>
-                    <button onClick={cancelEditing}>취소</button>
+                    <div className="CLCeditButtonBox">
+                      <button onClick={() => saveEditing(comm.id)}>저장</button>
+                      <button onClick={cancelEditing}>취소</button>
+                    </div>
                   </div>
                 ) : (
                   <>
@@ -175,7 +177,7 @@ export default function PostCommentContent() {
                                       (comment) => comment.id !== comm.id
                                     )
                                   );
-                                } catch (error) {}
+                                } catch (error) { }
                               }
                             }}
                           >
