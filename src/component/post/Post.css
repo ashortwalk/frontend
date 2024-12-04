@@ -1,36 +1,334 @@
-/* Default Styles */
+/* General Styles */
+.PostImgContent {
+  max-width: 396px;
+}
+
+.PostComment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.no-image {
+  width: 396px;
+  height: 396px;
+  border-radius: 10px;
+  background-color: #eaeaea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #5d5a88;
+}
+
+.image-file {
+  max-width: 396px !important;
+  max-height: 396px !important;
+}
+
+.PostComment h2 {
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: bold;
+  color: #5d5a88;
+}
+
+.PostComment p {
+  font-size: 18px;
+  line-height: 30px;
+  color: #a0a3bd;
+}
+
+.PostComment p span {
+  filter: grayscale(100%);
+  opacity: 0.4;
+  padding-right: 5px;
+}
+
+.PostImgContent .PIButtonContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.PostImgContent .PIButtonContent button {
+  width: 101px;
+  height: 53px;
+  background-color: #dcdcdc;
+  border-radius: 24px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+.PostImgContent .PIButtonContent button:hover {
+  background-color: #0094ff;
+}
+
+.PostImgContent .PIButtonContent button:last-child:hover {
+  background-color: red;
+}
+
+/* Post Comment Content Styles */
+.PostCommentContent {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 95vh;
+  overflow-y: auto;
+  min-width: 400px;
+}
+
+/* Paragraph Styles */
+p {
+  font-size: 18px;
+  line-height: 30px;
+  color: #a0a3bd;
+  margin: 0;
+}
+
+/* Comment List Styles */
+.CommentList {
+  display: flex;
+  flex-direction: column; /* Stack comment items vertically */
+  align-items: center; /* Center-align the comment items horizontally */
+  justify-content: center;
+  gap: 15px; /* Optional: gap between each comment */
+  margin-top: 20px; /* Adjusted spacing between comments */
+}
+
+.CommentList .CommentListContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Center content inside each comment box */
+  justify-content: flex-start;
+  width: 500px;
+  border: solid 1px #d4d2e3;
+  border-radius: 24px;
+  padding: 36px 29px;
+  box-sizing: border-box;
+  margin-bottom: 11px;
+}
+
+.CommentList .CommentListContent .CLCbutton button {
+  float: right;
+  background-color: white;
+  border: none;
+  color: #0094ff;
+  margin-left: 16px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.CommentList .CommentListContent .CLCbutton .CLCReportComment {
+  float: right;
+  color: #f84031;
+}
+
+.CLCbutton {
+  width: 450px;
+}
+
+.CommentList :last-child {
+  margin-bottom: 0px;
+}
+
+/* Write Content Styles */
+.WriteContent {
+  margin: 24px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+}
+
+.WriteContent input {
+  width: 400px;
+  height: 53px;
+  border: solid 1px #d4d2e3;
+  border-radius: 24px;
+  padding-left: 32px;
+  margin-right: 11px;
+  box-sizing: border-box;
+}
+
+.WriteContent button {
+  width: 80px;
+  height: 53px;
+  background-color: #0094ff;
+  border-radius: 24px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* Main Content */
 .main-content {
   display: flex;
-  flex-direction: row; /* Align items horizontally by default */
-  align-items: flex-start; /* Vertically center items */
-  justify-content: center; /* Horizontally center items */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  gap: 30px;
 }
 
 /* Responsive Styles */
 
-/* For Tablet screens (max-width: 1024px) */
-@media (max-width: 1024px) {
-  .main-content {
-    flex-direction: column; /* Stack items vertically on tablets */
-    align-items: flex-start; /* Center the items vertically */
-    justify-content: center; /* Center the items horizontally */
+/* Tablet Screens (max-width: 1024px) */
+@media (max-width: 720px) {
+  .PostImgContent,
+  .WriteContent,
+  .CommentList .CommentListContent {
+    width: 396px !important;
+  }
+
+  .PostCommentContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    width: 396px !important;
+  }
+
+  .CLCbutton {
+    width: 270px;
+  }
+
+  .ImgBox,
+  .ImgBox > img,
+  .no-image {
+    width: 100%;
+    height: auto;
+  }
+  .PostComment {
+    margin-bottom: 10px;
+  }
+
+  .PostComment h2 {
+    font-size: 22px;
+    line-height: 32px;
+  }
+
+  .PostComment p {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .WriteContent input {
+    width: 280px;
+  }
+
+  .WriteContent button {
+    width: 70px;
+  }
+
+  .CommentList .CommentListContent {
+    min-width: 300px;
+    padding: 20px;
   }
 }
 
-/* For Mobile screens (max-width: 768px) */
+/* Mobile Screens (max-width: 768px) */
 @media (max-width: 768px) {
   .main-content {
-    flex-direction: column; /* Stack items vertically on mobile */
-    align-items: flex-start; /* Center the items vertically */
-    justify-content: center; /* Center the items horizontally */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .PostImgContent {
+    max-width: 300px;
+  }
+  .PostCommentContent,
+  .CommentList .CommentListContent {
+    width: 300px !important;
+  }
+
+  .ImgBox,
+  .ImgBox > img,
+  .no-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .PostComment h2 {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .PostComment p {
+    font-size: 14px;
+    line-height: 26px;
+  }
+
+  .WriteContent input {
+    width: 220px;
+  }
+
+  .WriteContent button {
+    width: 60px;
+  }
+
+  .CommentList .CommentListContent {
+    min-width: 280px;
+    padding: 15px;
+  }
+
+  .CommentList .CommentListContent .CLCbutton button {
+    font-size: 14px;
   }
 }
 
-/* For Small Mobile screens (max-width: 480px) */
+/* Small Mobile Screens (max-width: 480px) */
 @media (max-width: 480px) {
-  .main-content {
-    flex-direction: column; /* Ensure the items stack vertically on small mobile screens */
-    align-items: flex-start; /* Center items on small screens */
-    justify-content: center; /* Center items horizontally */
+  .PostImgContent {
+    max-width: 100%;
+  }
+
+  .ImgBox,
+  .ImgBox > img,
+  .no-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .PostComment h2 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .PostComment p {
+    font-size: 12px;
+    line-height: 24px;
+  }
+
+  .WriteContent input {
+    width: 180px;
+  }
+
+  .WriteContent button {
+    width: 50px;
+  }
+
+  .CommentList .CommentListContent {
+    min-width: 100%;
+    padding: 12px;
+  }
+
+  .CommentList .CommentListContent .CLCbutton button {
+    font-size: 12px;
   }
 }

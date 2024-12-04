@@ -1,8 +1,3 @@
-// import WriteComment from "./commentsidebar/WriteComment";
-// import CommentList from "./commentsidebar/CommentList";
-import "./PostCommentContent.css";
-import "./commentsidebar/WriteComment.css";
-import "./commentsidebar/CommentList.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -43,7 +38,7 @@ export default function PostCommentContent() {
 
       setComments([...comments]);
       commentwite();
-    } catch (error) { }
+    } catch (error) {}
   };
 
   //===댓글 목록===
@@ -55,7 +50,7 @@ export default function PostCommentContent() {
           {}
         );
         setComments(response.data);
-      } catch (error) { }
+      } catch (error) {}
     };
     const findUser = async () => {
       const response = await axios.get(`http://20.41.86.171:8000/api/users`, {
@@ -94,7 +89,7 @@ export default function PostCommentContent() {
         )
       );
       setEditingCommentId(null); // 수정 모드 종료
-    } catch (error) { }
+    } catch (error) {}
   };
 
   // 댓글 수정 취소
@@ -150,7 +145,6 @@ export default function PostCommentContent() {
                     <div className="CLCbutton">
                       {user.id == comm.userId ? (
                         <>
-                          {" "}
                           {/* 댓글 수정 */}
                           {editingCommentId !== comm.id && (
                             <button
@@ -177,7 +171,7 @@ export default function PostCommentContent() {
                                       (comment) => comment.id !== comm.id
                                     )
                                   );
-                                } catch (error) { }
+                                } catch (error) {}
                               }
                             }}
                           >
