@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 import axios from "axios";
 import "./Chat.css";
-const SOCKET_URL = "https://20.41.86.171/chat";
+const SOCKET_URL = "https://20.41.86.171/api/chat";
 
 const ChatComponent = ({ myGroup }) => {
   const socketRef = useRef(null);
