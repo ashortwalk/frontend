@@ -4,7 +4,7 @@
 
 일상을 한 걸음 앞으로, 산책 커뮤니티 “ 짧은 산책 “ 입니다.
 
-- 배포 주소 : [바로가기](https://devleveling.com)
+- 배포 주소 : [바로가기](https://ashortwalk.store)
 
 # 👟 TEAM
 
@@ -56,3 +56,7 @@
 - 카카오 소셜 로그인 : KAKAO API
 - 채팅 : Socket.io
 - 배포 : Azure (Ubuntu linux 20.04), Nginx
+
+# ⛏️ Project Server
+<img width="1008" alt="Architecture" src="https://github.com/user-attachments/assets/067e8cb9-7cce-4e87-854a-27ce84c9e26d">
+
