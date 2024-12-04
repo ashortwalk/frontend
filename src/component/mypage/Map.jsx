@@ -31,6 +31,8 @@ export default function Map() {
 
   // 지도 초기화
   useEffect(() => {
+    setDescriptions("");
+    setAddress("");
     const map = new window.Tmapv2.Map("map_div", {
       center: new window.Tmapv2.LatLng(37.566481622437934, 126.98502302169841),
       width: "300px",
