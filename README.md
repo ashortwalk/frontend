@@ -4,7 +4,7 @@
 
 일상을 한 걸음 앞으로, 산책 커뮤니티 “ 짧은 산책 “ 입니다.
 
-- 배포 주소 : [바로가기](https://20.41.86.171)
+- 배포 주소 : [바로가기](https://devleveling.com)
 
 # 👟 TEAM
 
@@ -55,4 +55,4 @@
 - 산책 통계 차트 : Chart.js (Radar)
 - 카카오 소셜 로그인 : KAKAO API
 - 채팅 : Socket.io
-- 배포 : Azure (Ubuntu linux 20.04)
+- 배포 : Azure (Ubuntu linux 20.04), Nginx
