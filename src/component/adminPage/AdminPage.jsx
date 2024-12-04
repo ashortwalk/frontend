@@ -14,7 +14,7 @@ export default function AdminPage() {
   useEffect(() => {
     async function fetchReports() {
       const response = await axios.get(
-        `http://localhost:8000/api/reports?page=${currentPage}`,
+        `http://127.0.0.1:8000/api/reports?page=${currentPage}`,
         {
           headers: { Authorization: authorization },
         }
@@ -26,7 +26,7 @@ export default function AdminPage() {
     }
     async function fetchTotalPages() {
       const response = await axios.get(
-        "http://localhost:8000/api/reports/count",
+        "http://127.0.0.1:8000/api/reports/count",
         {
           headers: { Authorization: authorization },
         }
@@ -39,7 +39,7 @@ export default function AdminPage() {
 
   async function deleteContent(reportId) {
     const response = await axios.delete(
-      `http://localhost:8000/api/reports/${reportId}`,
+      `http://127.0.0.1:8000/api/reports/${reportId}`,
       {
         headers: { Authorization: authorization },
       }
@@ -51,7 +51,7 @@ export default function AdminPage() {
   }
   async function deleteGroup() {
     const response = await axios.delete(
-      `http://localhost:8000/api/groups/${groupName}`,
+      `http://127.0.0.1:8000/api/groups/${groupName}`,
       { headers: { Authorization: authorization } }
     );
     if (300 > response.status >= 200) {

@@ -14,7 +14,7 @@ export default function GroupUpdate() {
   useEffect(() => {
     // 컴포넌트가 마운트될 때 API 호출
     const fetchData = async () => {
-      fetch(`http://localhost:8000/api/groups/${data.id}`, {
+      fetch(`http://127.0.0.1:8000/api/groups/${data.id}`, {
         method: "GET",
         headers: {
           Authorization: token,
@@ -48,7 +48,7 @@ export default function GroupUpdate() {
   const handleSubmit = (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
 
-    fetch(`http://localhost:8000/api/groups/${data.id}`, {
+    fetch(`http://127.0.0.1:8000/api/groups/${data.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

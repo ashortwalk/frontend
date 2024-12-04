@@ -19,7 +19,7 @@ export default function MissionCreate() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
-    await fetch(`http://localhost:8000/api/groups/${groupId}/missions`, {
+    await fetch(`http://127.0.0.1:8000/api/groups/${groupId}/missions`, {
       method: "POST", // POST 요청
       headers: {
         "Content-Type": "application/json",

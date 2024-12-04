@@ -4,7 +4,7 @@ function KakaoLogin() {
   const { Kakao } = window;
   async function StartKakao() {
     try {
-      const response = await fetch(`http://localhost:8000/api/auth/kakaokey`, {
+      const response = await fetch(`http://127.0.0.1:8000/api/auth/kakaokey`, {
         method: "POST",
       });
       const result = await response.json();
