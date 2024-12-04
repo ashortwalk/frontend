@@ -1,3 +1,14 @@
+.group-outer-box {
+  width: 100%;
+}
+
+.group-outer-box .admin-title {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+}
+
+
 .group-inner-box {
   display: flex;
   flex-direction: row;
@@ -8,7 +19,6 @@
 }
 
 .group-box {
-  width: 40vw;
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -18,6 +28,7 @@
   gap: 20px;
 }
 
+/* 그룹 삭제 신고내역 */
 .group-border-box {
   width: 35vw;
   height: 65vh;
@@ -27,7 +38,7 @@
   justify-content: center;
   border-radius: 20px;
   border: 1px solid #d4d2e3;
-  padding: 20px 40px;
+  padding: 10px 40px;
 }
 
 .group-outer-box {
@@ -36,13 +47,6 @@
   align-items: center;
   justify-content: center;
   padding: 0px 60px;
-}
-
-.admin-title {
-  width: 80vw;
-}
-.admin-subtitle {
-  color: #5d5a88;
 }
 
 .admin-box {
@@ -55,30 +59,179 @@
   gap: 20px;
 }
 
-.admin-inner-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* 그룹삭제 */
+.admin-box .admin-subtitle {
+  color: #5d5a88;
 }
 
-.admin-label {
-  padding-right: 10px;
+.admin-box .group-name-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
 }
-.group-name {
-  width: 29vw;
+
+.group-name-box {}
+
+/* 그룹이름 */
+.group-name-box .admin-label {
+  font-size: 18px;
 }
-.group-delete-button,
-.notice-button {
+
+.group-name-box .group-name {
+  width: 32vw;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+
+.admin-box .group-delete-button,
+.admin-box .notice-button {
+  width: 100%;
+  padding: 2vh 0;
+  border: 1px solid #42adfb;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 20px;
+  background-color: transparent;
+  color: #42adfb;
+  cursor: pointer;
+}
+
+.admin-box .group-delete-button:hover {
   background-color: #42adfb;
   color: white;
-  height: 5vh;
-  border-radius: 10px;
-  width: 34vw;
-  border: none;
 }
+
 .notice {
   border: #d4d2e3 1px solid;
   border-radius: 10px;
   width: 34vw;
   height: auto;
 }
+
+/* 신고내역 */
+.group-border-box:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* gap: 20px; */
+}
+
+.group-border-box .report-subtitle {
+  color: #5d5a88;
+
+}
+
+.group-border-box #report-list {
+  width: 100%;
+  border: 1px solid #d4d2e3;
+  border-radius: 4px;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+.group-border-box #report-list.empty {
+  border: none;
+}
+
+
+.group-border-box #report-list .report-content-box h3 {
+  margin: 0;
+  line-height: 32px;
+}
+
+.group-border-box #report-list .report-content-box p {
+  font-size: 16px;
+}
+
+.group-border-box #report-list .report-button-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2%;
+  margin-top: 2%;
+}
+
+.group-border-box #report-list .report-button-box button {
+  font-size: 16px;
+  background-color: transparent;
+  color: #42adfb;
+  border-radius: 10px;
+  width: 22%;
+  border: none;
+  cursor: pointer;
+}
+
+.group-border-box .report-pagination {
+  width: 100%;
+}
+
+
+@media screen and (max-width: 768px) {
+  .group-outer-box {
+    width: 100% !important;
+
+  }
+
+  .group-outer-box .admin-title {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+
+  .group-inner-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+  }
+
+  .group-box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    gap: 20px;
+  }
+
+  .group-border-box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 1px solid #d4d2e3;
+    padding: 40px 40px;
+  }
+
+  .group-outer-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 60px;
+  }
+
+  /* 그룹이름 신고 인풋 */
+  .group-name-box .group-name {
+    width: 60%;
+  }
+
+}
+
+@media screen and (max-width: 480px) {}

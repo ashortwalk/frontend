@@ -120,11 +120,13 @@ h1:hover {
 @media screen and (max-width: 768px) {
   .buttonBox {
     display: flex;
-    flex-direction: column; /* Hide main buttons on small screens */
+    flex-direction: column;
+    /* Hide main buttons on small screens */
   }
 
   .hamburger {
-    display: flex; /* Show hamburger menu */
+    display: flex;
+    /* Show hamburger menu */
   }
 
   .navMenu {
