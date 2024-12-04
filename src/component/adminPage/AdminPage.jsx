@@ -14,7 +14,7 @@ export default function AdminPage() {
   useEffect(() => {
     async function fetchReports() {
       const response = await axios.get(
-        `http://20.41.86.171:8000/api/reports?page=${currentPage}`,
+        `https://20.41.86.171:8000/api/reports?page=${currentPage}`,
         {
           headers: { Authorization: authorization },
         }
@@ -26,7 +26,7 @@ export default function AdminPage() {
     }
     async function fetchTotalPages() {
       const response = await axios.get(
-        "http://20.41.86.171:8000/api/reports/count",
+        "https://20.41.86.171:8000/api/reports/count",
         {
           headers: { Authorization: authorization },
         }
@@ -39,7 +39,7 @@ export default function AdminPage() {
 
   async function deleteContent(reportId) {
     const response = await axios.delete(
-      `http://20.41.86.171:8000/api/reports/${reportId}`,
+      `https://20.41.86.171:8000/api/reports/${reportId}`,
       {
         headers: { Authorization: authorization },
       }
@@ -51,7 +51,7 @@ export default function AdminPage() {
   }
   async function deleteGroup() {
     const response = await axios.delete(
-      `http://20.41.86.171:8000/api/groups/${groupName}`,
+      `https://20.41.86.171:8000/api/groups/${groupName}`,
       { headers: { Authorization: authorization } }
     );
     if (300 > response.status >= 200) {
@@ -65,8 +65,6 @@ export default function AdminPage() {
       <div className="group-outer-box">
         <h1 className="admin-title">Admin</h1>
         <div className="group-inner-box">
-
-
           <div className="group-box">
             <div className="group-border-box">
               {/* 그룹삭제 */}
@@ -96,12 +94,15 @@ export default function AdminPage() {
           </div>
 
           <div className="group-border-box">
-            <h2 className="report-subtitle" >신고 내역</h2>
+            <h2 className="report-subtitle">신고 내역</h2>
             <div id="report-list">
-
               {reports.map((report) => {
                 return (
-                  <div className={`report-content-box ${reports.length === 0 ? 'empty' : ''}`}>
+                  <div
+                    className={`report-content-box ${
+                      reports.length === 0 ? "empty" : ""
+                    }`}
+                  >
                     <h3>제목 : {report.reportTitle}</h3>
                     <p>내용 : {report.reportContent}</p>
                     <div className="report-button-box">

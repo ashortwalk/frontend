@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Group from "./Group";
 import Pagination from "../posts/Pagination";
-import './GroupList.css'
+import "./GroupList.css";
 
 export default function GroupList() {
   const [groups, SetGroups] = useState([]);
@@ -11,7 +11,7 @@ export default function GroupList() {
   useEffect(() => {
     const findGroup = async () => {
       const response = await axios.get(
-        `http://20.41.86.171:8000/api/groups?page=${currentPage}`
+        `https://20.41.86.171:8000/api/groups?page=${currentPage}`
       );
       const data = response.data;
       SetGroups(data);
@@ -19,7 +19,7 @@ export default function GroupList() {
 
     const findTotalPages = async () => {
       const response = await axios.get(
-        `http://20.41.86.171:8000/api/groups/count`
+        `https://20.41.86.171:8000/api/groups/count`
       );
       const data = response.data;
       setTotalPages(data);

@@ -17,7 +17,7 @@ const Post = () => {
       try {
         setLoading(true); // 로딩 시작
         const result = await axios.get(
-          `http://20.41.86.171:8000/api/posts/${id}`
+          `https://20.41.86.171:8000/api/posts/${id}`
         );
         setData(result.data); // 데이터 설정
       } catch (err) {

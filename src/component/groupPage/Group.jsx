@@ -4,7 +4,7 @@ import "./Group.css";
 export default function Group({ groups }) {
   const authorization = sessionStorage.getItem("Authorization");
   const handleJoinGroup = (groupId) => {
-    fetch(`http://20.41.86.171:8000/api/groups/${groupId}/members`, {
+    fetch(`https://20.41.86.171:8000/api/groups/${groupId}/members`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,8 +20,8 @@ export default function Group({ groups }) {
         }
         return response.json();
       })
-      .then((data) => { })
-      .catch((error) => { });
+      .then((data) => {})
+      .catch((error) => {});
   };
 
   return (

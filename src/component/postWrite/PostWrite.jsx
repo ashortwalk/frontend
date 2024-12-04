@@ -59,7 +59,7 @@ export default function PostWrite() {
       // 서버로 POST 요청
       alert("게시글을 작성 중입니다. 잠시만 기다려 주세요.");
       const response = await axios.post(
-        "http://20.41.86.171:8000/api/posts",
+        "https://20.41.86.171:8000/api/posts",
         data,
         {
           headers: {

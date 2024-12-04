@@ -30,7 +30,7 @@ export default function SignUp() {
   const handleEmailSubmit = (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지d
 
-    fetch("http://20.41.86.171:8000/api/auth/email", {
+    fetch("https://20.41.86.171:8000/api/auth/email", {
       method: "POST", // POST 요청
       headers: {
         "Content-Type": "application/json", // JSON 형식으로 전송
@@ -53,7 +53,7 @@ export default function SignUp() {
   const handleSignupSubmit = (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
 
-    fetch("http://20.41.86.171:8000/api/auth/signup", {
+    fetch("https://20.41.86.171:8000/api/auth/signup", {
       method: "POST", // POST 요청
       headers: {
         "Content-Type": "application/json", // JSON 형식으로 전송
@@ -81,7 +81,7 @@ export default function SignUp() {
   const handleVerifySubmit = (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
 
-    fetch("http://20.41.86.171:8000/api/auth/verify", {
+    fetch("https://20.41.86.171:8000/api/auth/verify", {
       method: "POST", // POST 요청
       headers: {
         "Content-Type": "application/json", // JSON 형식으로 전송

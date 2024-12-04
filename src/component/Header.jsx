@@ -30,7 +30,7 @@ export default function Header() {
     async function authCheck() {
       try {
         const response = await axios.get(
-          "http://20.41.86.171:8000/api/auth/check",
+          "https://20.41.86.171:8000/api/auth/check",
           {
             headers: { Authorization: authorization },
           }
@@ -56,7 +56,7 @@ export default function Header() {
     async function refreshAccessToken() {
       try {
         const response = await fetch(
-          "http://20.41.86.171:8000/api/auth/refresh",
+          "https://20.41.86.171:8000/api/auth/refresh",
           {
             method: "POST",
             headers: {
