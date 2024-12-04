@@ -43,7 +43,7 @@
     margin: 10px auto; /* 여백을 더 줄여서 버튼이 화면에 적절히 배치되도록 */
   }
   .Board {
-    padding: 20px 0px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;

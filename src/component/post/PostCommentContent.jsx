@@ -184,7 +184,7 @@ export default function PostCommentContent() {
                             className="CLCReportComment"
                             onClick={(e) => {
                               e.preventDefault();
-                              window.location.href = `http://20.41.86.171:3000/reports/comments/${comm.id}`;
+                              window.location.href = `/reports/comments/${comm.id}`;
                             }}
                           >
                             신고

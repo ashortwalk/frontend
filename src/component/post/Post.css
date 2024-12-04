@@ -184,10 +184,10 @@ p {
   gap: 30px;
 }
 
-/* Responsive Styles */
-
-/* Tablet Screens (max-width: 1024px) */
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
+  .main-content {
+    flex-direction: column;
+  }
   .PostImgContent,
   .WriteContent,
   .CommentList .CommentListContent {
@@ -232,7 +232,7 @@ p {
   }
 
   .WriteContent button {
-    width: 70px;
+    width: 80px;
   }
 
   .CommentList .CommentListContent {
@@ -279,7 +279,7 @@ p {
   }
 
   .WriteContent button {
-    width: 60px;
+    width: 80px;
   }
 
   .CommentList .CommentListContent {
@@ -294,8 +294,11 @@ p {
 
 /* Small Mobile Screens (max-width: 480px) */
 @media (max-width: 480px) {
+  .main-content {
+    width: 300px;
+  }
   .PostImgContent {
-    max-width: 100%;
+    max-width: 80%;
   }
 
   .ImgBox,
@@ -316,11 +319,11 @@ p {
   }
 
   .WriteContent input {
-    width: 180px;
+    width: 210px;
   }
 
-  .WriteContent button {
-    width: 50px;
+  .WriteContent > form > button {
+    width: 80px !important;
   }
 
   .CommentList .CommentListContent {
@@ -329,6 +332,6 @@ p {
   }
 
   .CommentList .CommentListContent .CLCbutton button {
-    font-size: 12px;
+    width: 80px;
   }
 }

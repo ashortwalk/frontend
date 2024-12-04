@@ -283,8 +283,12 @@ export default function Map() {
   return (
     <div>
       <div id="map_div" style={{ width: "100%", height: "500px" }}></div>
+      <p id="map_notice">
+        시,도 단위를 포함한 도로명 주소를 말하거나 입력하세요.
+      </p>
       <p id="map_notice">음성 인식 후 표시된 주소가 상이해도 놀라지 마세요!</p>
       <p id="map_notice"> AI가 가장 가까운 도로명 주소로 해석합니다.</p>
+
       <div id="search-box">
         <input
           type="text"
