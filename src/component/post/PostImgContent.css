@@ -1,10 +1,18 @@
 /* General Styles */
 .PostImgContent {
   margin-right: 62px;
+  max-width: 396px;
 }
 
-.ImgBox,
-.ImgBox > img,
+.PostComment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px !important;
+  padding: 10px 0px 30px 0px;
+}
+
 .no-image {
   width: 396px;
   height: 396px;
@@ -16,7 +24,10 @@
   justify-content: center;
   color: #5d5a88;
 }
-
+.image-file {
+  max-width: 396px !important;
+  max-height: 396px !important;
+}
 .PostComment h2 {
   font-size: 24px;
   line-height: 34px;

@@ -18,7 +18,7 @@ export default function PostCommentContent() {
 
   const [editingCommentId, setEditingCommentId] = useState(null); // 수정 중인 댓글 ID
   const [editingContent, setEditingContent] = useState(""); // 수정 중인 댓글 내용
-
+  const [user, setUser] = useState("");
   //===댓글 입력창===
   const handleSubmin = (e) => {
     e.preventDefault();
@@ -57,7 +57,14 @@ export default function PostCommentContent() {
         setComments(response.data);
       } catch (error) {}
     };
+    const findUser = async () => {
+      const response = await axios.get(`http://20.41.86.171:8000/api/users`, {
+        headers: { authorization },
+      });
+      setUser(response.data);
+    };
     findComments();
+    findUser();
   }, [content]);
 
   // 댓글 수정 시작
@@ -139,47 +146,55 @@ export default function PostCommentContent() {
                     <p>{nickname}</p>
                     <p>{createdAt.split("T")[0]}</p>
                     <div className="CLCbutton">
-                      <button
-                        className="CLCReportComment"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          window.location.href = `http://20.41.86.171:3000/reports/comments/${comm.id}`;
-                        }}
-                      >
-                        신고
-                      </button>
-
-                      {/* 댓글 수정 */}
-                      {editingCommentId !== comm.id && (
-                        <button onClick={() => startEditing(comm.id, content)}>
-                          수정
-                        </button>
+                      {user.id == comm.userId ? (
+                        <>
+                          {" "}
+                          {/* 댓글 수정 */}
+                          {editingCommentId !== comm.id && (
+                            <button
+                              onClick={() => startEditing(comm.id, content)}
+                            >
+                              수정
+                            </button>
+                          )}
+                          {/* =====댓글삭제 */}
+                          <button
+                            onClick={async () => {
+                              if (window.confirm("댓글을 삭제하시겠습니까?")) {
+                                try {
+                                  await axios.delete(
+                                    `http://20.41.86.171:8000/api/posts/${postId}/comments/${comm.id}`,
+                                    {
+                                      headers: {
+                                        Authorization: authorization,
+                                      },
+                                    }
+                                  );
+                                  setComments(
+                                    comments.filter(
+                                      (comment) => comment.id !== comm.id
+                                    )
+                                  );
+                                } catch (error) {}
+                              }
+                            }}
+                          >
+                            삭제
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            className="CLCReportComment"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              window.location.href = `http://20.41.86.171:3000/reports/comments/${comm.id}`;
+                            }}
+                          >
+                            신고
+                          </button>
+                        </>
                       )}
-
-                      {/* =====댓글삭제 */}
-                      <button
-                        onClick={async () => {
-                          if (window.confirm("댓글을 삭제하시겠습니까?")) {
-                            try {
-                              await axios.delete(
-                                `http://20.41.86.171:8000/api/posts/${postId}/comments/${comm.id}`,
-                                {
-                                  headers: {
-                                    Authorization: authorization,
-                                  },
-                                }
-                              );
-                              setComments(
-                                comments.filter(
-                                  (comment) => comment.id !== comm.id
-                                )
-                              );
-                            } catch (error) {}
-                          }
-                        }}
-                      >
-                        삭제
-                      </button>
                     </div>
                   </>
                 )}

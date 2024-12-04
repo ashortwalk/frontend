@@ -29,7 +29,7 @@ export default function PostImgContent({ data }) {
   return (
     <div className="PostImgContent">
       <div className="ImgBox">
-        {url ? <img src={url} alt="" /> : <div></div>}
+        {url ? <img className="image-file" src={url} alt="" /> : <div></div>}
       </div>
       <div className="PostComment">
         <h2>{title}</h2>
