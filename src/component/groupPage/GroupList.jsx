@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Group from "./Group";
 import Pagination from "../posts/Pagination";
+import './GroupList.css'
 
 export default function GroupList() {
   const [groups, SetGroups] = useState([]);

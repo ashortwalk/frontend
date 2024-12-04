@@ -20,8 +20,8 @@ export default function Group({ groups }) {
         }
         return response.json();
       })
-      .then((data) => {})
-      .catch((error) => {});
+      .then((data) => { })
+      .catch((error) => { });
   };
 
   return (
