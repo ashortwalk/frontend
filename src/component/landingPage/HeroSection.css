@@ -7,7 +7,7 @@
 
 .HeroTitle {
   font-size: 72px;
-  font-style: extrabold;
+  font-weight: 800; /* 'extrabold'를 대신하여 숫자 값으로 설정 */
   color: #0f172a;
   line-height: 110%;
   margin-bottom: 0;
@@ -37,3 +37,67 @@
   min-width: 224px;
 }
 
+/* 반응형 디자인: 화면 크기에 따라 폰트 크기 및 레이아웃 조정 */
+
+/* 작은 화면 (모바일 화면) */
+@media (max-width: 767px) {
+  .HeroSection {
+    padding: 40px 20px;
+  }
+
+  .HeroTitle {
+    font-size: 36px; /* 제목 크기 줄이기 */
+  }
+
+  .HeroDescription {
+    font-size: 16px; /* 설명 텍스트 크기 줄이기 */
+  }
+
+  .HeroButton {
+    padding: 10px 20px;
+    font-size: 16px; /* 버튼 폰트 크기 줄이기 */
+    min-width: 180px; /* 버튼 최소 너비 줄이기 */
+  }
+}
+
+/* 중간 크기 화면 (태블릿 화면) */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .HeroSection {
+    padding: 60px 40px;
+  }
+
+  .HeroTitle {
+    font-size: 56px; /* 제목 크기 줄이기 */
+  }
+
+  .HeroDescription {
+    font-size: 18px;
+  }
+
+  .HeroButton {
+    padding: 12px 22px;
+    font-size: 18px; /* 버튼 폰트 크기 줄이기 */
+    min-width: 200px; /* 버튼 최소 너비 줄이기 */
+  }
+}
+
+/* 큰 화면 (데스크탑 화면) */
+@media (min-width: 1025px) {
+  .HeroSection {
+    padding: 80px 80px;
+  }
+
+  .HeroTitle {
+    font-size: 72px; /* 데스크탑에서 기본 크기 */
+  }
+
+  .HeroDescription {
+    font-size: 18px;
+  }
+
+  .HeroButton {
+    padding: 12px 24px;
+    font-size: 20px; /* 기본 버튼 크기 */
+    min-width: 224px;
+  }
+}

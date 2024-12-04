@@ -7,9 +7,7 @@
   align-items: flex-start;
   gap: 10px;
 }
-img {
-  max-width: 300px;
-}
+
 /* WimageBox styles */
 .EditImage .WimageBox,
 .preivew {
