@@ -44,14 +44,14 @@
 
 @media screen and (max-width: 768px) {
   .GroupComponent .group-Container {
-    width: 60vw;
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: start;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .GroupComponent .group-Container .group-join-button {
-    width: 100%;
+    /* width: 100%; */
   }
 }
