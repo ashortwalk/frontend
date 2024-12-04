@@ -1,9 +1,9 @@
 .GroupComponent {
-  /* width: 100%; */
+  width: 100%;
 }
 
 .GroupComponent .group-Container {
-  width: 35vw;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: start;
@@ -23,12 +23,13 @@
 
 .GroupComponent .group-Container .group-Container-Detail h3 {
   margin: 0;
+  margin-bottom: 16px;
 }
 
 .GroupComponent .group-Container .group-Container-Detail p {
   font-size: 14px;
   color: #a0a3bd;
-  line-height: 16px;
+  line-height: 28px;
 }
 
 .GroupComponent .group-Container .group-join-button {
