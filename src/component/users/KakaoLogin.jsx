@@ -4,9 +4,12 @@ function KakaoLogin() {
   const { Kakao } = window;
   async function StartKakao() {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/auth/kakaokey`, {
-        method: "POST",
-      });
+      const response = await fetch(
+        `http://20.41.86.171:8000/api/auth/kakaokey`,
+        {
+          method: "POST",
+        }
+      );
       const result = await response.json();
 
       await Kakao.init(result.kakaoJSKey);

@@ -24,7 +24,7 @@ export default function PostEdit() {
     const fetchPost = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/posts/${postId}`,
+          `http://20.41.86.171:8000/api/posts/${postId}`,
           {
             headers: {
               Authorization: authorization,
@@ -78,7 +78,7 @@ export default function PostEdit() {
 
     try {
       const response = await axios.patch(
-        `http://127.0.0.1:8000/api/posts/${postId}`,
+        `http://20.41.86.171:8000/api/posts/${postId}`,
         data,
         {
           headers: {

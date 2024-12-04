@@ -24,53 +24,53 @@ export default function FeedPage() {
     try {
       const findTotalMemberCount = async () => {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/groups/${groupId}/members/count`,
+          `http://20.41.86.171:8000/api/groups/${groupId}/members/count`,
           { headers: { authorization } }
         );
         setTotalMember(response.data);
       };
       const findCompleteCount = async () => {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/groups/${groupId}/completes`,
+          `http://20.41.86.171:8000/api/groups/${groupId}/completes`,
           { headers: { authorization } }
         );
         setTotalCompelete(response.data);
       };
       const findUser = async () => {
-        const response = await axios.get(`http://127.0.0.1:8000/api/users`, {
+        const response = await axios.get(`http://20.41.86.171:8000/api/users`, {
           headers: { authorization },
         });
         setUser(response.data);
       };
       const findFeed = async () => {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/groups/${groupId}/feeds?page=${currentPage}`
+          `http://20.41.86.171:8000/api/groups/${groupId}/feeds?page=${currentPage}`
         );
         setFeedlist(response.data);
       };
       const findMission = async () => {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/groups/${groupId}/missions`,
+          `http://20.41.86.171:8000/api/groups/${groupId}/missions`,
           { headers: { authorization } }
         );
         setMission(response.data);
       };
       const countFeeds = async () => {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/groups/${groupId}/feeds/count`
+          `http://20.41.86.171:8000/api/groups/${groupId}/feeds/count`
         );
         setTotalPages(response.data);
       };
       const findMyGroup = async () => {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/groups/${groupId}`
+          `http://20.41.86.171:8000/api/groups/${groupId}`
         );
 
         setMyGroup(response.data);
       };
       const isComplete = async () => {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/groups/${groupId}/completes/check`,
+          `http://20.41.86.171:8000/api/groups/${groupId}/completes/check`,
           { headers: { authorization } }
         );
         if (response.data) {
@@ -99,7 +99,7 @@ export default function FeedPage() {
   async function complete() {
     try {
       const response = await axios.post(
-        `http://127.0.0.1:8000/api/groups/${groupId}/completes`,
+        `http://20.41.86.171:8000/api/groups/${groupId}/completes`,
         {},
         { headers: { authorization } }
       );
@@ -117,7 +117,7 @@ export default function FeedPage() {
   async function getPoint() {
     try {
       const response = await axios.delete(
-        `http://127.0.0.1:8000/api/groups/${groupId}/missions`,
+        `http://20.41.86.171:8000/api/groups/${groupId}/missions`,
         { headers: { authorization } }
       );
 
@@ -144,7 +144,7 @@ export default function FeedPage() {
     try {
       const feedContentWrite = async () => {
         const response = await axios.post(
-          `http://127.0.0.1:8000/api/groups/${groupId}/feeds`,
+          `http://20.41.86.171:8000/api/groups/${groupId}/feeds`,
           { content },
           {
             headers: {
@@ -171,7 +171,7 @@ export default function FeedPage() {
   const saveEditing = async (id) => {
     try {
       const response = await axios.patch(
-        `http://127.0.0.1:8000/api/groups/${groupId}/feeds/${id}`,
+        `http://20.41.86.171:8000/api/groups/${groupId}/feeds/${id}`,
         { content: editingContent },
         {
           headers: {
@@ -345,7 +345,7 @@ export default function FeedPage() {
                               if (window.confirm("피드를 삭제하시겠습니까?")) {
                                 try {
                                   await axios.delete(
-                                    `http://127.0.0.1:8000/api/groups/${groupId}/feeds/${feed.id}`,
+                                    `http://20.41.86.171:8000/api/groups/${groupId}/feeds/${feed.id}`,
                                     {
                                       headers: {
                                         Authorization: authorization,

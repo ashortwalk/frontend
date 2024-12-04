@@ -30,7 +30,7 @@ export default function Header() {
     async function authCheck() {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/api/auth/check",
+          "http://20.41.86.171:8000/api/auth/check",
           {
             headers: { Authorization: authorization },
           }
@@ -55,13 +55,16 @@ export default function Header() {
     // refreshAccessToken 함수 정의
     async function refreshAccessToken() {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/auth/refresh", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token, // `Bearer` 방식으로 전달
-          },
-        });
+        const response = await fetch(
+          "http://20.41.86.171:8000/api/auth/refresh",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token, // `Bearer` 방식으로 전달
+            },
+          }
+        );
         console.log("리프레시 토큰 작동");
 
         if (response.status === 401) {

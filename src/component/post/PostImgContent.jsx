@@ -48,7 +48,7 @@ export default function PostImgContent({ data }) {
             if (window.confirm("정말로 삭제하시겠습니까?")) {
               try {
                 await axios.delete(
-                  `http://127.0.0.1:8000/api/posts/${postId}`,
+                  `http://20.41.86.171:8000/api/posts/${postId}`,
                   {
                     headers: {
                       Authorization: authorization,
@@ -68,7 +68,7 @@ export default function PostImgContent({ data }) {
         <button
           onClick={(e) => {
             e.preventDefault();
-            window.location.href = `http://127.0.0.1:3000/reports/posts/${postId}`;
+            window.location.href = `http://20.41.86.171:3000/reports/posts/${postId}`;
           }}
         >
           신고

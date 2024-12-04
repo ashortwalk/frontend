@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 import axios from "axios";
 import "./Chat.css";
-const SOCKET_URL = "http://127.0.0.1:8000/chat";
+const SOCKET_URL = "http://20.41.86.171:8000/chat";
 
 const ChatComponent = ({ myGroup }) => {
   const socketRef = useRef(null);
@@ -17,7 +17,7 @@ const ChatComponent = ({ myGroup }) => {
   useEffect(() => {
     try {
       const findNickname = async () => {
-        const response = await axios.get(`http://127.0.0.1:8000/api/users`, {
+        const response = await axios.get(`http://20.41.86.171:8000/api/users`, {
           headers: { authorization: token },
         });
         setNickname(response.data.nickname);
