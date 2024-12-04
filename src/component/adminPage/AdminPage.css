@@ -19,7 +19,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: start;
   justify-content: center;
 
   gap: 20px;
@@ -38,7 +38,7 @@
 /* 그룹 삭제 신고내역 */
 .group-border-box {
   width: 35vw;
-  height: 65vh;
+  min-height: 65vh;
   display: flex;
   flex-direction: column;
   align-items: center;
