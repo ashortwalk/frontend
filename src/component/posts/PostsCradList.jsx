@@ -11,16 +11,14 @@ export default function PostsCardList() {
   useEffect(() => {
     const findPost = async () => {
       const response = await axios.get(
-        `https://20.41.86.171:8000/api/posts?page=${currentPage}`
+        `https://20.41.86.171/api/posts?page=${currentPage}`
       );
       const data = response.data;
       Setposts(data);
     };
 
     const findTotalPages = async () => {
-      const response = await axios.get(
-        `https://20.41.86.171:8000/api/posts/count`
-      );
+      const response = await axios.get(`https://20.41.86.171/api/posts/count`);
       const data = response.data;
 
       settotalPages(data.count);

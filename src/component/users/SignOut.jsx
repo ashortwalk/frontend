@@ -15,7 +15,7 @@ export default function SignOut() {
   useEffect(() => {
     // 컴포넌트가 마운트될 때 API 호출
     const fetchData = async () => {
-      fetch("https://20.41.86.171:8000/api/users", {
+      fetch("https://20.41.86.171/api/users", {
         method: "GET",
         headers: {
           Authorization: token,
@@ -49,7 +49,7 @@ export default function SignOut() {
 
     e.preventDefault(); // 기본 폼 제출 동작 방지
 
-    fetch(`https://20.41.86.171:8000/api/users/${id}`, {
+    fetch(`https://20.41.86.171/api/users/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

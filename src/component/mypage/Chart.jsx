@@ -36,7 +36,7 @@ export default function Chart() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://20.41.86.171:8000/api/statistics/category",
+          "https://20.41.86.171/api/statistics/category",
           {
             headers: {
               Authorization: window.sessionStorage.getItem("Authorization"),

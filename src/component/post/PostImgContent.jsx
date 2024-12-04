@@ -46,14 +46,11 @@ export default function PostImgContent({ data }) {
           onClick={async () => {
             if (window.confirm("정말로 삭제하시겠습니까?")) {
               try {
-                await axios.delete(
-                  `https://20.41.86.171:8000/api/posts/${postId}`,
-                  {
-                    headers: {
-                      Authorization: authorization,
-                    },
-                  }
-                );
+                await axios.delete(`https://20.41.86.171/api/posts/${postId}`, {
+                  headers: {
+                    Authorization: authorization,
+                  },
+                });
                 alert("게시물이 삭제되었습니다.");
                 navigate("/posts");
               } catch (error) {
