@@ -55,4 +55,4 @@
 - 산책 통계 차트 : Chart.js (Radar)
 - 카카오 소셜 로그인 : KAKAO API
 - 채팅 : Socket.io
-- 배포 : express, Azure (Ubuntu linux 20.04)
+- 배포 : Azure (Ubuntu linux 20.04)
