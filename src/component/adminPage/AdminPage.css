@@ -1,15 +1,16 @@
 .group-outer-box {
-  width: 100%;
+  width: 100% !important;
 }
 
 .group-outer-box .admin-title {
   display: inline-block;
-  width: 100%;
+  width: 70vw;
   text-align: left;
 }
 
 
 .group-inner-box {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -131,16 +132,24 @@
 
 .group-border-box #report-list {
   width: 100%;
+}
+
+.group-border-box #report-list .report-content-box {
   border: 1px solid #d4d2e3;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 24px 16px;
+  margin-bottom: 14px;
   box-sizing: border-box;
 }
 
-.group-border-box #report-list.empty {
-  border: none;
+.group-border-box #report-list .report-content-box:last-child {
+  margin-bottom: 0;
 }
 
+/* 신고내역이 없으면 빈공간 */
+.group-border-box #report-list .report-content-box.empty {
+  border: none;
+}
 
 .group-border-box #report-list .report-content-box h3 {
   margin: 0;
@@ -188,6 +197,7 @@
 
 
   .group-inner-box {
+    width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
