@@ -97,14 +97,11 @@ export default function AdminPage() {
 
           <div className="group-border-box">
             <h2 className="report-subtitle" >신고 내역</h2>
-            <div
-              id="report-list"
-              className={`report-list ${reports.length === 0 ? 'empty' : ''}`}
-            >
+            <div id="report-list">
 
               {reports.map((report) => {
                 return (
-                  <div className="report-content-box">
+                  <div className={`report-content-box ${reports.length === 0 ? 'empty' : ''}`}>
                     <h3>제목 : {report.reportTitle}</h3>
                     <p>내용 : {report.reportContent}</p>
                     <div className="report-button-box">
