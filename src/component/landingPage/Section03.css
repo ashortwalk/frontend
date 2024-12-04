@@ -9,6 +9,10 @@
   justify-content: center;
 }
 
+.section03-image {
+  min-width: 90%;
+}
+
 /* 화면 크기가 768px 이하일 때 */
 @media (max-width: 900px) {
   .Section03 {
