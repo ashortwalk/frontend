@@ -62,12 +62,14 @@ export default function AdminPage() {
   return (
     <div>
       <Header />
-
       <div className="group-outer-box">
         <h1 className="admin-title">Admin</h1>
         <div className="group-inner-box">
+
+
           <div className="group-box">
             <div className="group-border-box">
+              {/* 그룹삭제 */}
               <div className="admin-box">
                 <h2 className="admin-subtitle">그룹 삭제</h2>
                 <div className="group-name-box">
@@ -92,13 +94,19 @@ export default function AdminPage() {
               </div>
             </div>
           </div>
+
           <div className="group-border-box">
-            <div id="report-list">
+            <h2 className="report-subtitle" >신고 내역</h2>
+            <div
+              id="report-list"
+              className={`report-list ${reports.length === 0 ? 'empty' : ''}`}
+            >
+
               {reports.map((report) => {
                 return (
                   <div className="report-content-box">
-                    <h3>{report.reportTitle}</h3>
-                    <p>{report.reportContent}</p>
+                    <h3>제목 : {report.reportTitle}</h3>
+                    <p>내용 : {report.reportContent}</p>
                     <div className="report-button-box">
                       <button
                         onClick={(e) => {
@@ -121,11 +129,13 @@ export default function AdminPage() {
                 );
               })}
             </div>
-            <Pagination
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              totalPages={totalPages}
-            ></Pagination>
+            <div className="report-pagination">
+              <Pagination
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                totalPages={totalPages}
+              ></Pagination>
+            </div>
           </div>
         </div>
       </div>
