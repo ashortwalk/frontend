@@ -11,14 +11,16 @@ export default function GroupList() {
   useEffect(() => {
     const findGroup = async () => {
       const response = await axios.get(
-        `https://20.41.86.171/api/groups?page=${currentPage}`
+        `https://ashortwalk.store/api/groups?page=${currentPage}`
       );
       const data = response.data;
       SetGroups(data);
     };
 
     const findTotalPages = async () => {
-      const response = await axios.get(`https://20.41.86.171/api/groups/count`);
+      const response = await axios.get(
+        `https://ashortwalk.store/api/groups/count`
+      );
       const data = response.data;
       setTotalPages(data);
     };

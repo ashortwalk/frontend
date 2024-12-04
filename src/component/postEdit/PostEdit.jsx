@@ -24,7 +24,7 @@ export default function PostEdit() {
     const fetchPost = async () => {
       try {
         const response = await axios.get(
-          `https://20.41.86.171/api/posts/${postId}`,
+          `https://ashortwalk.store/api/posts/${postId}`,
           {
             headers: {
               Authorization: authorization,
@@ -78,7 +78,7 @@ export default function PostEdit() {
 
     try {
       const response = await axios.patch(
-        `https://20.41.86.171/api/posts/${postId}`,
+        `https://ashortwalk.store/api/posts/${postId}`,
         data,
         {
           headers: {

@@ -14,7 +14,7 @@ export default function AdminPage() {
   useEffect(() => {
     async function fetchReports() {
       const response = await axios.get(
-        `https://20.41.86.171/api/reports?page=${currentPage}`,
+        `https://ashortwalk.store/api/reports?page=${currentPage}`,
         {
           headers: { Authorization: authorization },
         }
@@ -26,7 +26,7 @@ export default function AdminPage() {
     }
     async function fetchTotalPages() {
       const response = await axios.get(
-        "https://20.41.86.171/api/reports/count",
+        "https://ashortwalk.store/api/reports/count",
         {
           headers: { Authorization: authorization },
         }
@@ -39,7 +39,7 @@ export default function AdminPage() {
 
   async function deleteContent(reportId) {
     const response = await axios.delete(
-      `https://20.41.86.171/api/reports/${reportId}`,
+      `https://ashortwalk.store/api/reports/${reportId}`,
       {
         headers: { Authorization: authorization },
       }
@@ -51,7 +51,7 @@ export default function AdminPage() {
   }
   async function deleteGroup() {
     const response = await axios.delete(
-      `https://20.41.86.171/api/groups/${groupName}`,
+      `https://ashortwalk.store/api/groups/${groupName}`,
       { headers: { Authorization: authorization } }
     );
     if (300 > response.status >= 200) {

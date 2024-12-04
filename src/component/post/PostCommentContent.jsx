@@ -25,7 +25,7 @@ export default function PostCommentContent() {
     try {
       const commentwite = async () => {
         const response = await axios.post(
-          `https://20.41.86.171/api/posts/${postId}/comments`,
+          `https://ashortwalk.store/api/posts/${postId}/comments`,
           { content },
           {
             headers: {
@@ -46,14 +46,14 @@ export default function PostCommentContent() {
     const findComments = async () => {
       try {
         const response = await axios.get(
-          `https://20.41.86.171/api/posts/${postId}/comments`,
+          `https://ashortwalk.store/api/posts/${postId}/comments`,
           {}
         );
         setComments(response.data);
       } catch (error) {}
     };
     const findUser = async () => {
-      const response = await axios.get(`https://20.41.86.171/api/users`, {
+      const response = await axios.get(`https://ashortwalk.store/api/users`, {
         headers: { authorization },
       });
       setUser(response.data);
@@ -72,7 +72,7 @@ export default function PostCommentContent() {
   const saveEditing = async (id) => {
     try {
       const response = await axios.patch(
-        `https://20.41.86.171/api/posts/${postId}/comments/${id}`,
+        `https://ashortwalk.store/api/posts/${postId}/comments/${id}`,
         { content: editingContent },
         {
           headers: {
@@ -159,7 +159,7 @@ export default function PostCommentContent() {
                               if (window.confirm("댓글을 삭제하시겠습니까?")) {
                                 try {
                                   await axios.delete(
-                                    `https://20.41.86.171/api/posts/${postId}/comments/${comm.id}`,
+                                    `https://ashortwalk.store/api/posts/${postId}/comments/${comm.id}`,
                                     {
                                       headers: {
                                         Authorization: authorization,

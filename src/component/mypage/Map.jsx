@@ -21,7 +21,7 @@ export default function Map() {
   // Azure Key 호출
   useEffect(() => {
     const fetchKeys = async () => {
-      const response = await fetch("https://20.41.86.171/api/key");
+      const response = await fetch("https://ashortwalk.store/api/key");
       const data = await response.json();
       setGptKey(data.gptKey);
       setSttKey(data.sttKey);

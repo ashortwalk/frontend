@@ -14,7 +14,7 @@ export default function UserUpdate() {
   useEffect(() => {
     // 컴포넌트가 마운트될 때 API 호출
     const fetchData = async () => {
-      fetch("https://20.41.86.171/api/users", {
+      fetch("https://ashortwalk.store/api/users", {
         method: "GET",
         headers: {
           Authorization: token,
@@ -44,7 +44,7 @@ export default function UserUpdate() {
   const handleUserEditSubmit = (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
 
-    fetch(`https://20.41.86.171/api/users/${id}`, {
+    fetch(`https://ashortwalk.store/api/users/${id}`, {
       method: "PATCH", // POST 요청
       headers: {
         "Content-Type": "application/json",

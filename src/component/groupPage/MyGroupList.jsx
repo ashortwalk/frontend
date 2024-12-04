@@ -11,7 +11,7 @@ export default function MyGroupList() {
     // 컴포넌트가 마운트될 때 API 호출
     const fetchData = async () => {
       const countResponse = await fetch(
-        `https://20.41.86.171/api/groups/mygroups/count`,
+        `https://ashortwalk.store/api/groups/mygroups/count`,
         {
           method: "GET",
           headers: {
@@ -22,7 +22,7 @@ export default function MyGroupList() {
       const count = await countResponse.json();
       setTotalPages(count);
       await fetch(
-        `https://20.41.86.171/api/groups/mygroups?page=${currentPage}`,
+        `https://ashortwalk.store/api/groups/mygroups?page=${currentPage}`,
         {
           method: "GET",
           headers: {

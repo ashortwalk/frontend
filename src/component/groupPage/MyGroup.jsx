@@ -12,7 +12,7 @@ export default function MyGroup({ groups }) {
     navigate(`/groups/${id}/update`, { state: dataToSend });
   };
   const handleSignOutButtonClick = (id) => {
-    fetch(`https://20.41.86.171/api/groups/${id}/members`, {
+    fetch(`https://ashortwalk.store/api/groups/${id}/members`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export default function MyGroup({ groups }) {
       .catch((error) => {});
   };
   const handelDeleteButtonClick = (id) => {
-    fetch(`https://20.41.86.171/api/groups/${id}`, {
+    fetch(`https://ashortwalk.store/api/groups/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export default function MyGroup({ groups }) {
   };
   useState(() => {
     const fetchUserId = (id) => {
-      fetch(`https://20.41.86.171/api/users`, {
+      fetch(`https://ashortwalk.store/api/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

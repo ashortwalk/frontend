@@ -46,11 +46,14 @@ export default function PostImgContent({ data }) {
           onClick={async () => {
             if (window.confirm("정말로 삭제하시겠습니까?")) {
               try {
-                await axios.delete(`https://20.41.86.171/api/posts/${postId}`, {
-                  headers: {
-                    Authorization: authorization,
-                  },
-                });
+                await axios.delete(
+                  `https://ashortwalk.store/api/posts/${postId}`,
+                  {
+                    headers: {
+                      Authorization: authorization,
+                    },
+                  }
+                );
                 alert("게시물이 삭제되었습니다.");
                 navigate("/posts");
               } catch (error) {
@@ -64,7 +67,7 @@ export default function PostImgContent({ data }) {
         <button
           onClick={(e) => {
             e.preventDefault();
-            window.location.href = `https://20.41.86.171:3000/reports/posts/${postId}`;
+            window.location.href = `https://ashortwalk.store:3000/reports/posts/${postId}`;
           }}
         >
           신고

@@ -19,7 +19,7 @@ export default function MissionCreate() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
-    await fetch(`https://20.41.86.171/api/groups/${groupId}/missions`, {
+    await fetch(`https://ashortwalk.store/api/groups/${groupId}/missions`, {
       method: "POST", // POST 요청
       headers: {
         "Content-Type": "application/json",

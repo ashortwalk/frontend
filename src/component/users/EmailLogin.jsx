@@ -17,7 +17,7 @@ export default function EmailLogin() {
   };
 
   const handleSubmit = async (e) => {
-    await fetch("https://20.41.86.171/api/auth/login", {
+    await fetch("https://ashortwalk.store/api/auth/login", {
       method: "POST", // POST 요청
       headers: {
         "Content-Type": "application/json", // JSON 형식으로 전송
