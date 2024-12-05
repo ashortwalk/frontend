@@ -8,10 +8,12 @@ const ChatComponent = ({ myGroup }) => {
   const socketRef = useRef(null);
   const messageListRef = useRef(null);
   const [messages, setMessages] = useState([]);
+  const [messageInput, setMessageInput] = useState("");
   const { id: groupId } = myGroup;
   const [nickname, setNickname] = useState("");
   const [isMember, SetIsMember] = useState(true);
   const token = sessionStorage.getItem("Authorization");
+  const [isComposing, setIsComposing] = useState(false); // IME 입력 중인지 확인하는 상태
 
   useEffect(() => {
     try {
@@ -47,15 +49,34 @@ const ChatComponent = ({ myGroup }) => {
   }, [groupId, token]);
 
   function handleSendMessage() {
-    const messageInput = document.querySelector(".chat-input").value;
     if (messageInput) {
       socketRef.current.emit("chat:message", {
         nickname,
         room: groupId,
         message: messageInput,
       });
+      setMessageInput("");
     }
   }
+
+  // 입력값 처리 함수
+  const handleInputChange = (e) => {
+    if (!isComposing) {
+      // IME 입력 중이 아닐 때만 상태 업데이트
+      setMessageInput(e.target.value);
+    }
+  };
+
+  // IME 입력 시작 시 호출되는 함수
+  const handleCompositionStart = () => {
+    setIsComposing(true); // IME 입력 시작
+  };
+
+  // IME 입력 종료 시 호출되는 함수
+  const handleCompositionEnd = (e) => {
+    setIsComposing(false); // IME 입력 종료
+    setMessageInput(e.target.value); // 상태 업데이트
+  };
 
   useEffect(() => {
     if (messageListRef.current) {
@@ -101,6 +122,10 @@ const ChatComponent = ({ myGroup }) => {
             <input
               className="chat-input"
               type="text"
+              value={messageInput}
+              onChange={handleInputChange} // 일반적인 입력 변화 처리
+              onCompositionStart={handleCompositionStart} // IME 입력 시작 처리
+              onCompositionEnd={handleCompositionEnd} // IME 입력 종료 처리
               placeholder="Type your message..."
               onKeyDown={(e) => {
                 if (e.key == "Enter") handleSendMessage();
