@@ -84,6 +84,7 @@
 }
 
 .PostImgContent {
+  width: 396px !important;
   height: 95vh;
   display: flex;
   flex-direction: column;
