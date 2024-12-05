@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 import axios from "axios";
 import "./Chat.css";
+
 const SOCKET_URL = "https://ashortwalk.store/api/chat";
 
 const ChatComponent = ({ myGroup }) => {
@@ -40,6 +41,7 @@ const ChatComponent = ({ myGroup }) => {
     socketRef.current.on("chat:message", (data) => {
       setMessages((prevMessages) => [...prevMessages, data]);
     });
+
     socketRef.current.on("error", () => {
       setIsMember(false);
       socketRef.current.disconnect();
@@ -64,21 +66,23 @@ const ChatComponent = ({ myGroup }) => {
     }
   }
 
+  // 입력 변경 처리
   const handleInputChange = (e) => {
-    if (!isComposing) {
-      setMessageInput(e.target.value);
-    }
+    setMessageInput(e.target.value);
   };
 
+  // 조합 시작 처리
   const handleCompositionStart = () => {
     setIsComposing(true);
   };
 
+  // 조합 종료 처리
   const handleCompositionEnd = (e) => {
     setIsComposing(false);
     setMessageInput(e.target.value);
   };
 
+  // 메시지 목록이 변경될 때마다 스크롤 최하단으로 이동
   useEffect(() => {
     if (messageListRef.current) {
       messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
@@ -118,7 +122,7 @@ const ChatComponent = ({ myGroup }) => {
               className="chat-input"
               type="text"
               value={messageInput}
-              onChange={handleInputChange}
+              onChange={handleInputChange} // onChange로 입력 처리
               onCompositionStart={handleCompositionStart}
               onCompositionEnd={handleCompositionEnd}
               placeholder="Type your message..."
