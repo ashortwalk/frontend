@@ -78,8 +78,8 @@ const ChatComponent = ({ myGroup }) => {
 
   // 조합 종료 처리
   const handleCompositionEnd = (e) => {
-    setMessageInput(e.target.value);
     setIsComposing(false);
+    setMessageInput(e.target.value);
   };
 
   // 메시지 목록이 변경될 때마다 스크롤 최하단으로 이동
@@ -127,7 +127,7 @@ const ChatComponent = ({ myGroup }) => {
               onCompositionEnd={handleCompositionEnd}
               placeholder="Type your message..."
               onKeyDown={(e) => {
-                if (e.key === "Enter" && isComposing) handleSendMessage();
+                if (e.key === "Enter") handleSendMessage();
               }}
             />
             <button
