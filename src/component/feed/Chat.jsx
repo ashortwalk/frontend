@@ -78,8 +78,8 @@ const ChatComponent = ({ myGroup }) => {
 
   // 조합 종료 처리
   const handleCompositionEnd = (e) => {
-    setIsComposing(false);
     setMessageInput(e.target.value);
+    setIsComposing(false);
   };
 
   // 메시지 목록이 변경될 때마다 스크롤 최하단으로 이동
