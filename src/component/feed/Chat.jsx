@@ -11,20 +11,24 @@ const ChatComponent = ({ myGroup }) => {
   const [messageInput, setMessageInput] = useState("");
   const { id: groupId } = myGroup;
   const [nickname, setNickname] = useState("");
-  const [isMember, SetIsMember] = useState(true);
+  const [isMember, setIsMember] = useState(true); // 함수명 수정
   const token = sessionStorage.getItem("Authorization");
-  const [isComposing, setIsComposing] = useState(false); // IME 입력 중인지 확인하는 상태
+  const [isComposing, setIsComposing] = useState(false);
 
   useEffect(() => {
-    try {
-      const findNickname = async () => {
+    const findNickname = async () => {
+      try {
         const response = await axios.get(`https://ashortwalk.store/api/users`, {
           headers: { authorization: token },
         });
         setNickname(response.data.nickname);
-      };
-      findNickname();
-    } catch (err) {}
+      } catch (err) {
+        console.error("Nickname fetch error:", err);
+        alert("닉네임을 불러오는 데 실패했습니다.");
+      }
+    };
+
+    findNickname();
 
     socketRef.current = io(SOCKET_URL, {
       auth: { token },
@@ -36,8 +40,8 @@ const ChatComponent = ({ myGroup }) => {
     socketRef.current.on("chat:message", (data) => {
       setMessages((prevMessages) => [...prevMessages, data]);
     });
-    socketRef.current.on("error", (data) => {
-      SetIsMember(false);
+    socketRef.current.on("error", () => {
+      setIsMember(false);
       socketRef.current.disconnect();
     });
 
@@ -55,27 +59,23 @@ const ChatComponent = ({ myGroup }) => {
         room: groupId,
         message: messageInput,
       });
-      setMessageInput("");
+      setMessageInput(""); // 입력 후 메시지 상태 초기화
     }
   }
 
-  // 입력값 처리 함수
   const handleInputChange = (e) => {
     if (!isComposing) {
-      // IME 입력 중이 아닐 때만 상태 업데이트
       setMessageInput(e.target.value);
     }
   };
 
-  // IME 입력 시작 시 호출되는 함수
   const handleCompositionStart = () => {
-    setIsComposing(true); // IME 입력 시작
+    setIsComposing(true);
   };
 
-  // IME 입력 종료 시 호출되는 함수
   const handleCompositionEnd = (e) => {
-    setIsComposing(false); // IME 입력 종료
-    setMessageInput(e.target.value); // 상태 업데이트
+    setIsComposing(false);
+    setMessageInput(e.target.value);
   };
 
   useEffect(() => {
@@ -99,23 +99,17 @@ const ChatComponent = ({ myGroup }) => {
               marginBottom: "10px",
             }}
           >
-            {messages.map((msg, idx) => {
-              if (msg.nickname === nickname) {
-                return (
-                  <div className="my-chat-box" key={idx}>
-                    <p>{msg.content}</p>
-                    <p className="chat-nickname">{msg.nickname}</p>
-                  </div>
-                );
-              } else {
-                return (
-                  <div className="chat-box" key={idx}>
-                    <p>{msg.content}</p>
-                    <p className="chat-nickname">{msg.nickname}</p>
-                  </div>
-                );
-              }
-            })}
+            {messages.map((msg, idx) => (
+              <div
+                className={
+                  msg.nickname === nickname ? "my-chat-box" : "chat-box"
+                }
+                key={idx}
+              >
+                <p>{msg.content}</p>
+                <p className="chat-nickname">{msg.nickname}</p>
+              </div>
+            ))}
           </div>
 
           <div className="chat-input-box">
@@ -123,12 +117,12 @@ const ChatComponent = ({ myGroup }) => {
               className="chat-input"
               type="text"
               value={messageInput}
-              onChange={handleInputChange} // 일반적인 입력 변화 처리
-              onCompositionStart={handleCompositionStart} // IME 입력 시작 처리
-              onCompositionEnd={handleCompositionEnd} // IME 입력 종료 처리
+              onChange={handleInputChange}
+              onCompositionStart={handleCompositionStart}
+              onCompositionEnd={handleCompositionEnd}
               placeholder="Type your message..."
               onKeyDown={(e) => {
-                if (e.key == "Enter") handleSendMessage();
+                if (e.key === "Enter") handleSendMessage();
               }}
             />
             <button
