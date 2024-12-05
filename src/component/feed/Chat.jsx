@@ -13,7 +13,7 @@ const ChatComponent = ({ myGroup }) => {
   const [nickname, setNickname] = useState("");
   const [isMember, setIsMember] = useState(true); // 함수명 수정
   const token = sessionStorage.getItem("Authorization");
-  const [isComposing, setIsComposing] = useState(false);
+  const [isComposing, setIsComposing] = useState(true);
 
   useEffect(() => {
     const findNickname = async () => {
