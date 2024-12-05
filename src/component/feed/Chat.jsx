@@ -8,7 +8,6 @@ const ChatComponent = ({ myGroup }) => {
   const socketRef = useRef(null);
   const messageListRef = useRef(null);
   const [messages, setMessages] = useState([]);
-  const [messageInput, setMessageInput] = useState("");
   const { id: groupId } = myGroup;
   const [nickname, setNickname] = useState("");
   const [isMember, SetIsMember] = useState(true);
@@ -48,13 +47,13 @@ const ChatComponent = ({ myGroup }) => {
   }, [groupId, token]);
 
   function handleSendMessage() {
+    const messageInput = document.querySelector("chat-input").value;
     if (messageInput) {
       socketRef.current.emit("chat:message", {
         nickname,
         room: groupId,
         message: messageInput,
       });
-      setMessageInput("");
     }
   }
 
@@ -102,8 +101,6 @@ const ChatComponent = ({ myGroup }) => {
             <input
               className="chat-input"
               type="text"
-              value={messageInput}
-              onChange={(e) => setMessageInput(e.target.value)}
               placeholder="Type your message..."
               onKeyDown={(e) => {
                 if (e.key == "Enter") handleSendMessage();
