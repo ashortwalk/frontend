@@ -7,11 +7,11 @@ export default function Header() {
   const token = window.sessionStorage.getItem("token");
   const [isLogined, setIsLogined] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [currentPath, setCurrentPath] = useState("");
   useEffect(() => {
+    setCurrentPath(window.location.pathname);
     // 로그인되지 않은 경우 경로를 체크하고 로그인 페이지로 리디렉션
     const checkRedirect = () => {
-      const currentPath = window.location.pathname;
       if (
         !isLogined &&
         ![
@@ -83,7 +83,7 @@ export default function Header() {
         }
       } catch (err) {}
     }
-  }, []);
+  }, [currentPath]);
 
   function logout() {
     sessionStorage.removeItem("Authorization");
