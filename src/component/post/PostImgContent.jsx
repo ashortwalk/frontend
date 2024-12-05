@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-export default function PostImgContent({ data }) {
+export default function PostImgContent({ data, user }) {
   const {
     id: postId,
     title,
@@ -9,6 +9,7 @@ export default function PostImgContent({ data }) {
     createdAt,
     nickname,
     viewCount,
+    userId,
   } = data;
   const navigate = useNavigate();
   const authorization = window.sessionStorage.getItem("Authorization");
@@ -41,37 +42,44 @@ export default function PostImgContent({ data }) {
         </p>
       </div>
       <div className="PIButtonContent">
-        <button onClick={() => navigate(`/post/edit/${postId}`)}>수정</button>
-        <button
-          onClick={async () => {
-            if (window.confirm("정말로 삭제하시겠습니까?")) {
-              try {
-                await axios.delete(
-                  `https://ashortwalk.store/api/posts/${postId}`,
-                  {
-                    headers: {
-                      Authorization: authorization,
-                    },
+        {user.id == userId ? (
+          <>
+            <button onClick={() => navigate(`/post/edit/${postId}`)}>
+              수정
+            </button>
+            <button
+              onClick={async () => {
+                if (window.confirm("정말로 삭제하시겠습니까?")) {
+                  try {
+                    await axios.delete(
+                      `https://ashortwalk.store/api/posts/${postId}`,
+                      {
+                        headers: {
+                          Authorization: authorization,
+                        },
+                      }
+                    );
+                    alert("게시물이 삭제되었습니다.");
+                    navigate("/posts");
+                  } catch (error) {
+                    alert("게시물 삭제에 실패했습니다.");
                   }
-                );
-                alert("게시물이 삭제되었습니다.");
-                navigate("/posts");
-              } catch (error) {
-                alert("게시물 삭제에 실패했습니다.");
-              }
-            }
-          }}
-        >
-          삭제
-        </button>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            window.location.href = `https://ashortwalk.store/reports/posts/${postId}`;
-          }}
-        >
-          신고
-        </button>
+                }
+              }}
+            >
+              삭제
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = `https://ashortwalk.store/reports/posts/${postId}`;
+            }}
+          >
+            신고
+          </button>
+        )}
       </div>
     </div>
   );

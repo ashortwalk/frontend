@@ -2,7 +2,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export default function PostCommentContent() {
+export default function PostCommentContent({ user }) {
   const { id: postId } = useParams();
   // id:postid 유저아이디
   // id 댓글 아이디
@@ -13,7 +13,7 @@ export default function PostCommentContent() {
 
   const [editingCommentId, setEditingCommentId] = useState(null); // 수정 중인 댓글 ID
   const [editingContent, setEditingContent] = useState(""); // 수정 중인 댓글 내용
-  const [user, setUser] = useState("");
+
   //===댓글 입력창===
   const handleSubmin = (e) => {
     e.preventDefault();
@@ -52,14 +52,8 @@ export default function PostCommentContent() {
         setComments(response.data);
       } catch (error) {}
     };
-    const findUser = async () => {
-      const response = await axios.get(`https://ashortwalk.store/api/users`, {
-        headers: { authorization },
-      });
-      setUser(response.data);
-    };
+
     findComments();
-    findUser();
   }, [content]);
 
   // 댓글 수정 시작
