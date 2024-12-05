@@ -13,7 +13,7 @@
 - 팀원 소개  
   | 이름 | 프론트엔드 담당 기능 |
   | ----- | ------------------- |
-  | 이다영 | 채팅, 산책 경로 추천, 산책 성향 통계, 관리자, 신고 |
+  | 이다영 | 채팅, 산책 경로 추천, 산책 성향 통계, 관리자, 신고, 미션 |
   | 한영희 | 게시판, 그룹, 피드, 랜딩 페이지 |
   | 조은혜 | 회원가입, 로그인, 그룹, 회원 관리 |
 
@@ -36,7 +36,7 @@
   - 게시글 작성 카테고리 분류에 따른 산책 성향 통계
   - 카카오 소셜 로그인
   - 실시간 채팅
-  - 게시판, 피드, 그룹
+  - 게시판, 피드, 그룹, 신고, 미션
 
 # ✒️ Coding Convention
 
@@ -58,5 +58,5 @@
 - 배포 : Azure (Ubuntu linux 20.04), Nginx
 
 # ⛏️ Project Server
-<img width="1008" alt="Architecture" src="https://github.com/user-attachments/assets/067e8cb9-7cce-4e87-854a-27ce84c9e26d">
 
+<img width="1008" alt="Architecture" src="https://github.com/user-attachments/assets/067e8cb9-7cce-4e87-854a-27ce84c9e26d">
