@@ -1,7 +1,4 @@
 /* General Styles */
-.PostImgContent {
-  max-width: 396px;
-}
 
 .PostComment {
   display: flex;
@@ -9,6 +6,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 10px;
+  margin-bottom: 12px;
 }
 
 .no-image {
@@ -53,8 +51,8 @@
 }
 
 .PostImgContent .PIButtonContent button {
-  width: 101px;
-  height: 53px;
+  width: 80px;
+  height: 40px;
   background-color: #dcdcdc;
   border-radius: 24px;
   border: none;
@@ -83,6 +81,14 @@
   height: 95vh;
   overflow-y: auto;
   min-width: 400px;
+}
+
+.PostImgContent {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
 }
 
 /* Paragraph Styles */
