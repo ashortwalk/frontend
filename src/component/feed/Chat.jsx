@@ -123,11 +123,10 @@ const ChatComponent = ({ myGroup }) => {
               type="text"
               value={messageInput}
               onChange={handleInputChange} // onChange로 입력 처리
-              onCompositionStart={handleCompositionStart}
-              onCompositionEnd={handleCompositionEnd}
-              placeholder="Type your message..."
+              onCompositionStart={handleCompositionStart} // 한글 조합 시작
+              onCompositionEnd={handleCompositionEnd} // 한글 조합 종료
               onKeyDown={(e) => {
-                if (e.key === "Enter") handleSendMessage();
+                if (e.key === "Enter") handleSendMessage(); // Enter키로 메시지 전송
               }}
             />
             <button
