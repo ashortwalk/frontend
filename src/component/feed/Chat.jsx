@@ -127,7 +127,7 @@ const ChatComponent = ({ myGroup }) => {
               onCompositionEnd={handleCompositionEnd}
               placeholder="Type your message..."
               onKeyDown={(e) => {
-                if (e.key === "Enter") handleSendMessage();
+                if (e.key === "Enter" && isComposing) handleSendMessage();
               }}
             />
             <button
