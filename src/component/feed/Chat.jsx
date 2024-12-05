@@ -55,7 +55,7 @@ const ChatComponent = ({ myGroup }) => {
   }, [groupId, token]);
 
   function handleSendMessage() {
-    if (messageInput) {
+    if (messageInput && !isComposing) {
       socketRef.current.emit("chat:message", {
         nickname,
         room: groupId,
