@@ -10,6 +10,7 @@ export default function PostImgContent({ data, user }) {
     nickname,
     viewCount,
     userId,
+    category,
   } = data;
   const navigate = useNavigate();
   const authorization = window.sessionStorage.getItem("Authorization");
@@ -33,13 +34,16 @@ export default function PostImgContent({ data, user }) {
       </div>
       <div className="PostComment">
         <h2>{title}</h2>
+
         <p>{content}</p>
         <p>{nickname}</p>
         <p>{formatDate(createdAt)}</p>
+
         <p>
           <span>👁️</span>
           {viewCount}
         </p>
+        <p className="category">{category}</p>
       </div>
       <div className="PIButtonContent">
         {user.id == userId ? (

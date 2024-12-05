@@ -1,5 +1,12 @@
 /* General Styles */
 
+.category {
+  background-color: #0094ff;
+  color: white !important;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
 .PostComment {
   display: flex;
   flex-direction: column;

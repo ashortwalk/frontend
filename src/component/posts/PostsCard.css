@@ -5,6 +5,14 @@
   gap: 20px; /* 카드 간 간격을 일정하게 설정 */
 }
 
+.category {
+  width: fit-content;
+  background-color: #0094ff;
+  color: white !important;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
 /* 카드 스타일 */
 .PostsCard > .PCcontent {
   padding: 16px 22px;

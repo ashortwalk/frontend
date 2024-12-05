@@ -22,12 +22,14 @@ export default function PostsCard({ posts }) {
               <div className="no-image">이미지 없음</div>
             )}
             <h3>{post.title}</h3>
+
             <p>{post.nickname}</p>
             <p>{post.createdAt.split("T")[0]}</p>
             <p>
               <span className="viewcount">👁️</span>
               {post.viewCount}
             </p>
+            <p className="category">{post.category}</p>
           </div>
         );
       })}
