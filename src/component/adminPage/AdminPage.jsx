@@ -31,7 +31,7 @@ export default function AdminPage() {
           headers: { Authorization: authorization },
         }
       );
-      setTotalPages(response.data.count);
+      setTotalPages(Math.ceil(response.data / 3));
     }
     fetchTotalPages();
     fetchReports();
