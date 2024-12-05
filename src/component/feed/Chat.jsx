@@ -99,7 +99,7 @@ const ChatComponent = ({ myGroup }) => {
           <div
             ref={messageListRef}
             style={{
-              height: "400px",
+              height: "550px",
               overflowY: "scroll",
               marginBottom: "10px",
             }}
