@@ -5,6 +5,7 @@
 일상을 한 걸음 앞으로, 산책 커뮤니티 “ 짧은 산책 “ 입니다.
 
 - 배포 주소 : [바로가기](https://ashortwalk.store)
+- 서비스 소개 포트폴리오 : [바로가기](https://www.figma.com/deck/sFdO9y50cpxNXCBfT1qAew/ashortwork?node-id=1-660&t=N5EdapRJCznnAKlL-1)
 
 # 👟 TEAM
 
