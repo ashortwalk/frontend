@@ -67,7 +67,7 @@ export default function PostImgContent({ data }) {
         <button
           onClick={(e) => {
             e.preventDefault();
-            window.location.href = `https://ashortwalk.store:3000/reports/posts/${postId}`;
+            window.location.href = `https://ashortwalk.store/reports/posts/${postId}`;
           }}
         >
           신고
