@@ -44,7 +44,7 @@ export default function AdminPage() {
         headers: { Authorization: authorization },
       }
     );
-    if (300 > response.status >= 200) {
+    if (200 <= response.status < 300) {
       alert("신고가 처리되어 콘텐츠가 삭제되었습니다.");
       window.location.reload();
     }
