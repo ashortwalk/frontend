@@ -47,7 +47,7 @@ const ChatComponent = ({ myGroup }) => {
   }, [groupId, token]);
 
   function handleSendMessage() {
-    const messageInput = document.querySelector("chat-input").value;
+    const messageInput = document.querySelector(".chat-input").value;
     if (messageInput) {
       socketRef.current.emit("chat:message", {
         nickname,
