@@ -80,21 +80,18 @@ const ChatComponent = ({ myGroup }) => {
             }}
           >
             {messages.map((msg, idx) => {
-              const content = msg.content || "No content";
-              const nickname = msg.nickname || "Anonymous";
-
               if (msg.nickname === nickname) {
                 return (
                   <div className="my-chat-box" key={idx}>
-                    <p>{content}</p>
-                    <p className="chat-nickname">{nickname}</p>
+                    <p>{msg.content}</p>
+                    <p className="chat-nickname">{msg.nickname}</p>
                   </div>
                 );
               } else {
                 return (
                   <div className="chat-box" key={idx}>
-                    <p>{content}</p>
-                    <p className="chat-nickname">{nickname}</p>
+                    <p>{msg.content}</p>
+                    <p className="chat-nickname">{msg.nickname}</p>
                   </div>
                 );
               }
