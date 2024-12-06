@@ -49,8 +49,8 @@ export default function AdminPage() {
       if (!isAdmin) {
         window.location.href = "https://ashortwalk.store";
       }
-      checkRedirect();
     };
+    checkRedirect();
   }, [isAdmin]);
 
   async function deleteContent(reportId) {
