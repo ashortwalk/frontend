@@ -19,7 +19,7 @@ export default function AdminPage() {
           headers: { Authorization: authorization },
         }
       );
-      if (response.stauts === 401) {
+      if (response.stauts === 401 || response.status == 403) {
         window.location.href = "./";
       }
       setReports(response.data);
