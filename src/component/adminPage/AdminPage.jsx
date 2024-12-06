@@ -11,7 +11,10 @@ export default function AdminPage() {
   const [reports, setReports] = useState([]);
   const [groupName, setGroupName] = useState("");
   const authorization = sessionStorage.getItem("Authorization");
+  const [currentPath, setCurrentPath] = useState("");
+  const [isAdmin, setIsAdmin] = useState(true);
   useEffect(() => {
+    setCurrentPath(window.location.pathname);
     async function fetchReports() {
       const response = await axios.get(
         `https://ashortwalk.store/api/reports?page=${currentPage}`,
@@ -29,13 +32,22 @@ export default function AdminPage() {
           headers: { Authorization: authorization },
         }
       );
-      if (response.stauts !== 200 || response.status !== 201) {
-        window.location.href = "https://ashortwalk.store";
+      if (response.stauts == 200 || response.status == 201) {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
       }
       setTotalPages(Math.ceil(response.data / 3));
     }
+
+    const checkRedirect = () => {
+      if (!isAdmin) {
+        window.location.href = "https://ashortwalk.store";
+      }
+    };
     fetchTotalPages();
     fetchReports();
+    checkRedirect();
   }, [authorization, currentPage]);
 
   async function deleteContent(reportId) {
