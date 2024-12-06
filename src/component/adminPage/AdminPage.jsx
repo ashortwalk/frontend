@@ -30,9 +30,9 @@ export default function AdminPage() {
         }
       );
       if (response.stauts === 401 || response.status == 403) {
-        window.location.href = "./";
-        setTotalPages(Math.ceil(response.data / 3));
+        window.location.href = "https://ashortwalk.store";
       }
+      setTotalPages(Math.ceil(response.data / 3));
     }
     fetchTotalPages();
     fetchReports();
