@@ -29,7 +29,7 @@ export default function AdminPage() {
           headers: { Authorization: authorization },
         }
       );
-      if (response.stauts === 401 || response.status == 403) {
+      if (response.stauts !== 200 || response.status !== 201) {
         window.location.href = "https://ashortwalk.store";
       }
       setTotalPages(Math.ceil(response.data / 3));
