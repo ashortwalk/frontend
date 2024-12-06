@@ -48,7 +48,7 @@ export default function AdminPage() {
     fetchTotalPages();
     fetchReports();
     checkRedirect();
-  }, [authorization, currentPage]);
+  }, [isAdmin]);
 
   async function deleteContent(reportId) {
     const response = await axios.delete(
