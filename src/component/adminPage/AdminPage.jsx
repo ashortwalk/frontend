@@ -19,9 +19,7 @@ export default function AdminPage() {
           headers: { Authorization: authorization },
         }
       );
-      if (response.stauts === 401 || response.status == 403) {
-        window.location.href = "./";
-      }
+
       setReports(response.data);
     }
     async function fetchTotalPages() {
@@ -31,7 +29,10 @@ export default function AdminPage() {
           headers: { Authorization: authorization },
         }
       );
-      setTotalPages(Math.ceil(response.data / 3));
+      if (response.stauts === 401 || response.status == 403) {
+        window.location.href = "./";
+        setTotalPages(Math.ceil(response.data / 3));
+      }
     }
     fetchTotalPages();
     fetchReports();
