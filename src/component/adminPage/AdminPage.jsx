@@ -45,8 +45,8 @@ export default function AdminPage() {
         );
         setReports(response.data);
       }
-      fetchTotalPages();
       fetchReports();
+      fetchTotalPages();
     } catch (err) {
       navigate("./"); // react-router로 홈으로 이동
     }
