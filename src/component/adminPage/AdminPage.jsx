@@ -31,6 +31,8 @@ export default function AdminPage() {
 
         if (response.status === 200 || response.status === 201) {
           setTotalPages(Math.ceil(response.data / 3)); // 총 페이지 수 계산
+        } else {
+          navigate("/"); // react-router로 홈으로 이동
         }
       }
 
