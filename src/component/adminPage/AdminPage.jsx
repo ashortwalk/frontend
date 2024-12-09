@@ -12,7 +12,6 @@ export default function AdminPage() {
   const [groupName, setGroupName] = useState("");
   const authorization = sessionStorage.getItem("Authorization");
   const [currentPath, setCurrentPath] = useState("");
-  const [isAdmin, setIsAdmin] = useState(null);
 
   useEffect(() => {
     setCurrentPath(window.location.pathname);
@@ -28,10 +27,9 @@ export default function AdminPage() {
 
       // 서버 응답이 200, 201일 때만 관리자로 설정
       if (response.status === 200 || response.status === 201) {
-        setIsAdmin(true);
         setTotalPages(Math.ceil(response.data / 3)); // 총 페이지 수 계산
       } else {
-        setIsAdmin(false);
+        window.location.href = "https://ashortwalk.store";
       }
     }
 
@@ -48,13 +46,6 @@ export default function AdminPage() {
     fetchTotalPages();
     fetchReports();
   }, [currentPage]);
-
-  // 관리자 여부 확인 후 리다이렉트
-  useEffect(() => {
-    if (isAdmin === false) {
-      window.location.href = "https://ashortwalk.store";
-    }
-  }, [isAdmin]); // isAdmin 값이 변경될 때마다 실행
 
   // 신고 처리 함수
   async function deleteContent(reportId) {
