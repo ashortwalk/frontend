@@ -14,37 +14,37 @@ export default function AdminPage() {
   const [currentPath, setCurrentPath] = useState("");
 
   useEffect(() => {
-    setCurrentPath(window.location.pathname);
+    try {
+      setCurrentPath(window.location.pathname);
 
-    // 관리자 여부 체크
-    async function fetchTotalPages() {
-      const response = await axios.get(
-        "https://ashortwalk.store/api/reports/count",
-        {
-          headers: { Authorization: authorization },
+      // 관리자 여부 체크
+      async function fetchTotalPages() {
+        const response = await axios.get(
+          "https://ashortwalk.store/api/reports/count",
+          {
+            headers: { Authorization: authorization },
+          }
+        );
+
+        if (response.status === 200 || response.status === 201) {
+          setTotalPages(Math.ceil(response.data / 3)); // 총 페이지 수 계산
         }
-      );
-
-      if (response.status === 200 || response.status === 201) {
-        setTotalPages(Math.ceil(response.data / 3)); // 총 페이지 수 계산
-      } else if (response.status == 401 || response.status == 403) {
-        console.log("no auth");
-        window.location.href = "./";
       }
-    }
 
-    async function fetchReports() {
-      const response = await axios.get(
-        `https://ashortwalk.store/api/reports?page=${currentPage}`,
-        {
-          headers: { Authorization: authorization },
-        }
-      );
-      setReports(response.data);
+      async function fetchReports() {
+        const response = await axios.get(
+          `https://ashortwalk.store/api/reports?page=${currentPage}`,
+          {
+            headers: { Authorization: authorization },
+          }
+        );
+        setReports(response.data);
+      }
+      fetchTotalPages();
+      fetchReports();
+    } catch (err) {
+      window.location.href = "./";
     }
-
-    fetchTotalPages();
-    fetchReports();
   }, [currentPage]);
 
   // 신고 처리 함수
