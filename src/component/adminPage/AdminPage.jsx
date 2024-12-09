@@ -50,7 +50,7 @@ export default function AdminPage() {
     } catch (err) {
       navigate("./"); // react-router로 홈으로 이동
     }
-  }, [currentPage, authorization, navigate]);
+  }, []);
 
   // 신고 처리 함수
   async function deleteContent(reportId) {
