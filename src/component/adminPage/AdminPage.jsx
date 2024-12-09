@@ -30,8 +30,7 @@ export default function AdminPage() {
         if (response.status === 200 || response.status === 201) {
           setTotalPages(Math.ceil(response.data / 3)); // 총 페이지 수 계산
         } else {
-          // 권한 없으면 로그인 페이지로 이동
-          navigate("/login");
+          navigate("/");
         }
       } catch (error) {
         if (error.response && error.response.status === 403) {
@@ -64,7 +63,7 @@ export default function AdminPage() {
       fetchTotalPages();
       fetchReports();
     } else {
-      navigate("/login"); // 인증 토큰이 없으면 로그인 페이지로 이동
+      navigate("/"); // 인증 토큰이 없으면 로그인 페이지로 이동
     }
   }, [authorization, currentPage, navigate]);
 
