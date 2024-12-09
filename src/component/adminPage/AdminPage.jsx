@@ -12,7 +12,7 @@ export default function AdminPage() {
   const [groupName, setGroupName] = useState("");
   const authorization = sessionStorage.getItem("Authorization");
   const [currentPath, setCurrentPath] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(null);
 
   useEffect(() => {
     setCurrentPath(window.location.pathname);
