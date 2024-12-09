@@ -16,27 +16,34 @@ export default function AdminPage() {
 
   const navigate = useNavigate(); // navigate 함수 추가
 
+  // fetchTotalPages와 fetchReports 함수들을 useEffect로 이동
   useEffect(() => {
-    try {
-      setCurrentPath(window.location.pathname);
-
-      // 관리자 여부 체크
-      async function fetchTotalPages() {
+    setCurrentPath(window.location.pathname);
+    async function fetchTotalPages() {
+      try {
         const response = await axios.get(
           "https://ashortwalk.store/api/reports/count",
           {
             headers: { Authorization: authorization },
           }
         );
-
         if (response.status === 200 || response.status === 201) {
           setTotalPages(Math.ceil(response.data / 3)); // 총 페이지 수 계산
         } else {
-          navigate("./");
+          // 권한 없으면 로그인 페이지로 이동
+          navigate("/login");
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 403) {
+          navigate("/");
+        } else {
+          navigate("/"); // 다른 오류 발생 시 홈 페이지로 이동
         }
       }
+    }
 
-      async function fetchReports() {
+    async function fetchReports() {
+      try {
         const response = await axios.get(
           `https://ashortwalk.store/api/reports?page=${currentPage}`,
           {
@@ -44,34 +51,61 @@ export default function AdminPage() {
           }
         );
         setReports(response.data);
+      } catch (error) {
+        if (error.response && error.response.status === 403) {
+          navigate("/");
+        } else {
+          navigate("/"); // 다른 오류 발생 시 홈 페이지로 이동
+        }
       }
-      fetchReports();
-      fetchTotalPages();
-    } catch (err) {
-      navigate("./"); // react-router로 홈으로 이동
     }
-  }, []);
+
+    if (authorization) {
+      fetchTotalPages();
+      fetchReports();
+    } else {
+      navigate("/login"); // 인증 토큰이 없으면 로그인 페이지로 이동
+    }
+  }, [authorization, currentPage, navigate]);
 
   // 신고 처리 함수
   async function deleteContent(reportId) {
-    const response = await axios.delete(
-      `https://ashortwalk.store/api/reports/${reportId}`,
-      { headers: { Authorization: authorization } }
-    );
-    if (response.status >= 200 && response.status < 300) {
-      alert("신고가 처리되어 콘텐츠가 삭제되었습니다.");
-      navigate(0); // 페이지를 새로고침 하는 방법 (리로드)
+    try {
+      const response = await axios.delete(
+        `https://ashortwalk.store/api/reports/${reportId}`,
+        { headers: { Authorization: authorization } }
+      );
+      if (response.status >= 200 && response.status < 300) {
+        alert("신고가 처리되어 콘텐츠가 삭제되었습니다.");
+        navigate(0); // 페이지를 새로고침 하는 방법 (리로드)
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 403) {
+        alert("권한이 없습니다. 로그인 페이지로 이동합니다.");
+        navigate("/login");
+      } else {
+        alert("콘텐츠 삭제에 실패했습니다.");
+      }
     }
   }
 
   // 그룹 삭제 함수
   async function deleteGroup() {
-    const response = await axios.delete(
-      `https://ashortwalk.store/api/groups/${groupName}`,
-      { headers: { Authorization: authorization } }
-    );
-    if (response.status >= 200 && response.status < 300) {
-      alert("그룹이 삭제되었습니다.");
+    try {
+      const response = await axios.delete(
+        `https://ashortwalk.store/api/groups/${groupName}`,
+        { headers: { Authorization: authorization } }
+      );
+      if (response.status >= 200 && response.status < 300) {
+        alert("그룹이 삭제되었습니다.");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 403) {
+        alert("권한이 없습니다. 로그인 페이지로 이동합니다.");
+        navigate("/login");
+      } else {
+        alert("그룹 삭제에 실패했습니다.");
+      }
     }
   }
 
@@ -112,14 +146,11 @@ export default function AdminPage() {
           <div className="group-border-box">
             <h2 className="report-subtitle">신고 내역</h2>
             <div id="report-list">
-              {reports.map((report) => {
-                return (
-                  <div
-                    className={`report-content-box ${
-                      reports.length === 0 ? "empty" : ""
-                    }`}
-                    key={report.id}
-                  >
+              {reports.length === 0 ? (
+                <p>신고 내역이 없습니다.</p>
+              ) : (
+                reports.map((report) => (
+                  <div className="report-content-box" key={report.id}>
                     <h3>제목 : {report.reportTitle}</h3>
                     <p>내용 : {report.reportContent}</p>
                     <div className="report-button-box">
@@ -143,8 +174,8 @@ export default function AdminPage() {
                       </button>
                     </div>
                   </div>
-                );
-              })}
+                ))
+              )}
             </div>
             <div className="report-pagination">
               <Pagination
