@@ -25,11 +25,11 @@ export default function AdminPage() {
         }
       );
 
-      // 서버 응답이 200, 201일 때만 관리자로 설정
       if (response.status === 200 || response.status === 201) {
         setTotalPages(Math.ceil(response.data / 3)); // 총 페이지 수 계산
       } else if (response.status == 401 || response.status == 403) {
-        window.location.href = "https://ashortwalk.store";
+        console.log("no auth");
+        window.location.href = "./";
       }
     }
 
