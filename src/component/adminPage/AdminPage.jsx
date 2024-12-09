@@ -51,7 +51,7 @@ export default function AdminPage() {
 
   // 관리자 여부 확인 후 리다이렉트
   useEffect(() => {
-    if (!isAdmin) {
+    if (isAdmin === false) {
       window.location.href = "https://ashortwalk.store";
     }
   }, [isAdmin]); // isAdmin 값이 변경될 때마다 실행
