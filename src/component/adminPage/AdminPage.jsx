@@ -12,7 +12,7 @@ export default function AdminPage() {
   const [groupName, setGroupName] = useState("");
   const authorization = sessionStorage.getItem("Authorization");
   const [currentPath, setCurrentPath] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false); // 기본값을 false로 설정
+  const [isAdmin, setIsAdmin] = useState(true);
 
   useEffect(() => {
     setCurrentPath(window.location.pathname);
