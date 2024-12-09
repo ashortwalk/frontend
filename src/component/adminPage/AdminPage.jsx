@@ -4,6 +4,7 @@ import Header from "../Header";
 import "./AdminPage.css";
 import Pagination from "../posts/Pagination";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // useNavigate 훅 추가
 
 export default function AdminPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,6 +13,8 @@ export default function AdminPage() {
   const [groupName, setGroupName] = useState("");
   const authorization = sessionStorage.getItem("Authorization");
   const [currentPath, setCurrentPath] = useState("");
+
+  const navigate = useNavigate(); // navigate 함수 추가
 
   useEffect(() => {
     try {
@@ -43,9 +46,9 @@ export default function AdminPage() {
       fetchTotalPages();
       fetchReports();
     } catch (err) {
-      window.location.href = "./";
+      navigate("/"); // react-router로 홈으로 이동
     }
-  }, [currentPage]);
+  }, [currentPage, authorization, navigate]);
 
   // 신고 처리 함수
   async function deleteContent(reportId) {
@@ -55,7 +58,7 @@ export default function AdminPage() {
     );
     if (response.status >= 200 && response.status < 300) {
       alert("신고가 처리되어 콘텐츠가 삭제되었습니다.");
-      window.location.reload();
+      navigate(0); // 페이지를 새로고침 하는 방법 (리로드)
     }
   }
 
@@ -121,7 +124,9 @@ export default function AdminPage() {
                       <button
                         onClick={(e) => {
                           e.preventDefault();
-                          window.location.href = `/${report.contentType}/${report.contentId}`;
+                          navigate(
+                            `/${report.contentType}/${report.contentId}`
+                          ); // react-router로 조회 페이지로 이동
                         }}
                       >
                         조회
